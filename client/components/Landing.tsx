@@ -1,7 +1,7 @@
 import React from 'react';
 import api from '../api';
 
-import * as i from './spoonacular';
+import * as i from './interfaces/spoonacular';
 
 const Landing = () => {
   const handleClick = () => {
