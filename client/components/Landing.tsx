@@ -1,7 +1,24 @@
 import React from 'react';
+import api from '../api';
+
+import * as i from './spoonacular';
 
 const Landing = () => {
-  return <h1 style={{ textAlign: 'center' }}>Landing Page</h1>;
+  const handleClick = () => {
+    const params: i.IRecipes = {
+      query: 'Chicken',
+      excludeIngredients: 'peas'
+    };
+
+    api.get('/spoonacular/1', { params });
+  };
+
+  return (
+    <h1 style={{ textAlign: 'center' }}>
+      Landing Page
+      <button onClick={handleClick}>Request</button>
+    </h1>
+  );
 };
 
 export default Landing;

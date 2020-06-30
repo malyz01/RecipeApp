@@ -1,0 +1,24 @@
+export interface IRecipeInformation {
+  includeNutrition?: boolean;
+}
+
+export interface ISimilarRecipes {
+  number?: number;
+  limitLicense?: boolean;
+}
+
+export interface IAnalyzedRecipeInstructions {
+  stepBreakdown?: boolean;
+}
+
+export interface IRecipes {
+  query: string;
+  cuisine?: string;
+  diet?: string;
+  excludeIngredients?: string;
+  intolerances?: string;
+  offset?: number;
+  number?: number;
+  limitLicense?: boolean;
+  instructionsRequired?: boolean;
+}

@@ -8,6 +8,11 @@ const api = axios.create({
   }
 });
 
+router.get('/:id', (req, res, next) => {
+  console.log(req.query);
+  res.status(200).json(req.params.id);
+});
+
 router.post('/', (req, res, next) => {
   console.log(req.query);
   res.json(req.body);
