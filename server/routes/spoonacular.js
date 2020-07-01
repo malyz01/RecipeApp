@@ -1,15 +1,17 @@
 const router = require('express').Router();
 const api = require('../config/spoonacular');
-const { toParams } = require('../helpers');
+const { toQuery } = require('../helpers');
 
-router.get('/search', async (req, res) => {
+// GET - /api/v1/spoonacular/recipes/:route
+router.get('/recipes/:route', async (req, res) => {
   try {
-    const params = toParams(req.query);
-    const { data } = await api.get('/search', params);
+    const query = toQuery(req.query);
+    const { route } = req.params;
+    const { data } = await api.get(route, query);
     res.status(200).json(data);
   } catch (err) {
     console.log(err.response.data);
-    res.status(200).res.json('Error: spoonacular Get - /search');
+    res.status(200).res.json(`Error: spoonacular Get - /${route}`);
   }
 });
 

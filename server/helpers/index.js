@@ -3,7 +3,7 @@ const validateEmail = (email) => {
   return re.test(email);
 };
 
-const toParams = (body) => {
+const toQuery = (req, body) => {
   return {
     params: { ...body }
   };
@@ -11,5 +11,5 @@ const toParams = (body) => {
 
 module.exports = {
   validateEmail,
-  toParams
+  toQuery
 };
