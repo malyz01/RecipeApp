@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: '/api/v1'
 });
 
-export default api;
+export const spoonacular = axios.create({
+  baseURL: '/api/v1/spoonacular/recipes/'
+});
