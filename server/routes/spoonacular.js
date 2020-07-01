@@ -1,32 +1,19 @@
-const axios = require('axios');
 const router = require('express').Router();
+const api = require('../config/spoonacular');
 const { toParams } = require('../helpers');
 
-const api = axios.create({
-  baseURL: process.env.FOOD_SPOONACULAR_URL,
-  params: {
-    apiKey: process.env.FOOD_SPOONACULAR_API
-  }
-});
-
-// router.get('/:id', (req, res, next) => {
-//   console.log(req.query);
-//   res.status(200).json(req.params.id);
-// });
-
-router.get('/search', async (req, res, next) => {
-  console.log(process.env.FOOD_SPOONACULAR_API);
+router.get('/search', async (req, res) => {
   try {
     const params = toParams(req.query);
-    console.log(params);
     const { data } = await api.get('/search', params);
-    res.json(data);
+    res.status(200).json(data);
   } catch (err) {
-    console.log(err);
+    console.log(err.response.data);
+    res.status(200).res.json('Error: spoonacular Get - /search');
   }
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', (req, res) => {
   console.log(req.query);
   res.json(req.body);
 });
