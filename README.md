@@ -1,9 +1,17 @@
-# Recipe App
+## Recipe App
 
 - Beta repo for recipe app
 
-### Developer
+## Developers
+
+- Fork this in your repo and set it to private
+- create a dev branch and work from there
+- We will be working on dev branch
 
 - [ ] Create spoonacular account
 - [ ] Get Api key from spoonacular
 - [ ] add .env file
+
+> Pull requests
+> - Pull a request from your dev branch to this repo's dev branch
+> - Final changes to this repo will be merge to master branch
