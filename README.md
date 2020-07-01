@@ -4,6 +4,6 @@
 
 ### Developer
 
-- [] Create spoonacular account
-- [] Get Api key from spoonacular
-- [] add .env file
+- [ ] Create spoonacular account
+- [ ] Get Api key from spoonacular
+- [ ] add .env file
