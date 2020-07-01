@@ -1,16 +1,19 @@
 import React from 'react';
-import api from '../api';
+import { connect } from 'react-redux';
 
-import * as i from './interfaces/spoonacular';
+import * as e from '../enum/spoonacular';
+import * as i from '../interfaces/spoonacular';
+import * as spoonacular from '../store/actions/spoonacular';
 
-const Landing = () => {
+const Landing = (props) => {
   const handleClick = () => {
-    const params: i.ISearch = {
+    console.log(props);
+    const query: i.ISearch = {
       query: 'Chicken',
       excludeIngredients: 'peas'
     };
 
-    api.get('/spoonacular/1', { params });
+    props.fetchRecipesBy(e.Params.search, { params: query });
   };
 
   return (
@@ -21,4 +24,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default connect(null, { ...spoonacular })(Landing);

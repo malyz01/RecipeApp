@@ -6,12 +6,16 @@ const INITIAL: i.IState = {
     pending: true,
     data: {}
   },
-  recipe: {}
+  recipe: {
+    pending: true,
+    data: {}
+  }
 };
+
 export default (state: i.IState = INITIAL, action: i.IAction) => {
   switch (action.type) {
     case Types.FETCH_SPOONACULAR_RECIPES:
-      return { ...state, recipes: action.payload };
+      return { ...state, recipes: { pending: false, data: action.payload } };
     case Types.FETCH_SPOONACULAR_RECIPE_BY_ID:
       return state;
     default:
