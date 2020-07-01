@@ -14,5 +14,5 @@
 > - [ ] add .env file
 
 > Pull requests
-> - Pull a request from your dev branch to this repo's dev branch
+> - For changes: pull a request from your dev branch to this repo's dev branch
 > - Final changes to this repo will be merge to master branch
