@@ -1,6 +1,11 @@
+export interface IData {
+  pending: boolean;
+  data: object;
+}
+
 export interface IState {
-  recipes: object;
-  recipe: object;
+  recipes: IData;
+  recipe: IData;
 }
 
 export interface IAction {
