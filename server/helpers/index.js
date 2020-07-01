@@ -3,6 +3,13 @@ const validateEmail = (email) => {
   return re.test(email);
 };
 
+const toParams = (body) => {
+  return {
+    params: { ...body }
+  };
+};
+
 module.exports = {
-  validateEmail
+  validateEmail,
+  toParams
 };
