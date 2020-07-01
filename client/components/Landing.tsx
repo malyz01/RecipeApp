@@ -5,7 +5,7 @@ import * as i from './interfaces/spoonacular';
 
 const Landing = () => {
   const handleClick = () => {
-    const params: i.IRecipes = {
+    const params: i.ISearch = {
       query: 'Chicken',
       excludeIngredients: 'peas'
     };

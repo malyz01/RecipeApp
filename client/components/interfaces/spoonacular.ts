@@ -11,7 +11,7 @@ export interface IAnalyzedRecipeInstructions {
   stepBreakdown?: boolean;
 }
 
-export interface IRecipes {
+export interface ISearch {
   query: string;
   cuisine?: string;
   diet?: string;
