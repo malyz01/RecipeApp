@@ -24,3 +24,18 @@ export enum QByIngredients {
   ranking = 'ranking',
   ignorePantry = 'ignorePantry'
 }
+
+export enum QComplex {
+  query = 'query', //required
+  cuisine = 'cuisine',
+  excludeCuisine = 'excludeCuisine',
+  diet = 'diet',
+  intolerances = 'intolerances',
+  equipment = 'equipment',
+  includeIngredients = 'includeIngredients',
+  excludeIngredients = 'excludeIngredients',
+  offset = 'offset',
+  number = 'number',
+  limitLicense = 'limitLicense',
+  instructionsRequired = 'instructionsRequired'
+}
