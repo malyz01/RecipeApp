@@ -5,7 +5,7 @@ export enum Params {
   complexSearch = 'Complex search'
 }
 
-export enum QSearch {
+export enum EQSearch {
   query = 'query', //required
   cuisine = 'cuisine',
   diet = 'diet',
@@ -17,7 +17,7 @@ export enum QSearch {
   instructionsRequired = 'instructionsRequired'
 }
 
-export enum QByIngredients {
+export enum EQByIngredients {
   ingredients = 'ingredients', //required
   number = 'number',
   limitLicense = 'limitLicense',
@@ -25,7 +25,7 @@ export enum QByIngredients {
   ignorePantry = 'ignorePantry'
 }
 
-export enum QComplex {
+export enum EQComplex {
   query = 'query', //required
   cuisine = 'cuisine',
   excludeCuisine = 'excludeCuisine',
