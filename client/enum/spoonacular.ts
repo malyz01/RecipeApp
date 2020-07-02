@@ -6,7 +6,7 @@ export enum Params {
 }
 
 export enum QSearch {
-  query = 'query',
+  query = 'query', //required
   cuisine = 'cuisine',
   diet = 'diet',
   excludeIngredients = 'excludeIngredients',
@@ -15,4 +15,12 @@ export enum QSearch {
   number = 'number',
   limitLicense = 'limitLicense',
   instructionsRequired = 'instructionsRequired'
+}
+
+export enum QByIngredients {
+  ingredients = 'ingredients', //required
+  number = 'number',
+  limitLicense = 'limitLicense',
+  ranking = 'ranking',
+  ignorePantry = 'ignorePantry'
 }
