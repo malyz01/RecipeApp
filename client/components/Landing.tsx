@@ -7,6 +7,7 @@ import * as spoonacular from '../store/actions/spoonacular';
 
 // TODO Changing route must also change queries
 const Landing = (props) => {
+  const [routes, setRoutes] = useState(Object.keys(e.Params));
   const [query, setQuery] = useState({
     query: 'Chicken',
     excludeIngredients: 'peas',
@@ -31,10 +32,11 @@ const Landing = (props) => {
       Landing Page
       <div>
         <select>
-          <option value={e.Params.search}>Search</option>
-          <option value={e.Params.complexSearch}>Complex Search</option>
-          <option value={e.Params.findByIngredients}>Find by Ingredients</option>
-          <option value={e.Params.findByNutrients}>Find by Nutrients</option>
+          {routes.map((r, i) => (
+            <option key={i} value={r}>
+              {e.Params[r]}
+            </option>
+          ))}
         </select>
         <button onClick={handleClick(query)}>Request</button>
       </div>
