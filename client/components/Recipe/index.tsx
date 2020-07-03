@@ -1,6 +1,7 @@
 import React, { PureComponent, ChangeEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
+import * as i from '../../interfaces/spoonacular';
 import * as spoonacular from '../../store/actions/spoonacular';
 
 const mapDispatch = { ...spoonacular };
@@ -12,7 +13,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 //   backgroundColor: string
 // }
 
-class index extends PureComponent<PropsFromRedux, any> {
+class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
   state = {
     query: '',
     fillIngredients: true,
@@ -22,6 +23,8 @@ class index extends PureComponent<PropsFromRedux, any> {
   };
 
   handleClick = () => {
+    // Uncomment below to check all the properties, inside curly brace press ctrl + space
+    // this.setState({})
     this.props.fetchRecipesBy('complexSearch', { params: this.state });
   };
 
