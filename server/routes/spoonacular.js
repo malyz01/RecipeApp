@@ -7,7 +7,7 @@ router.get('/recipes/:route', async (req, res) => {
   try {
     const query = toQuery(req.query);
     const { route } = req.params;
-    const { data } = await api.get(`/${route}`, query);
+    const { data } = await api.get(`/recipes/${route}`, query);
     res.status(200).json(data);
   } catch (err) {
     console.log(err.response.data);

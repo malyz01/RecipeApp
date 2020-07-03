@@ -12,7 +12,8 @@ const Landing = (props) => {
     query: 'Chicken',
     excludeIngredients: 'peas',
     cuisine: '',
-    diet: ''
+    diet: '',
+    number: 20
   });
 
   const handleQuery = (e) => {
@@ -24,7 +25,7 @@ const Landing = (props) => {
   };
 
   const handleClick = (query: i.ISearch) => () => {
-    props.fetchRecipesBy(e.Params.search, { params: query });
+    props.fetchRecipesBy('search', { params: query });
   };
 
   return (
