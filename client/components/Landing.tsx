@@ -24,7 +24,7 @@ const Landing = (props) => {
   };
 
   const handleClick = (query: i.ISearch) => () => {
-    props.fetchRecipesBy(e.Params.search, { params: query });
+    props.fetchRecipesBy('search', { params: query });
   };
 
   return (
