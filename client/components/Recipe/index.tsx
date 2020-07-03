@@ -1,34 +1,48 @@
-import React, { PureComponent, MouseEvent } from 'react';
+import React, { PureComponent, FormEvent } from 'react';
+import { connect } from 'react-redux';
 
 import * as e from '../../enum/spoonacular';
+import * as i from '../../interfaces/spoonacular';
+import * as spoonacular from '../../store/actions/spoonacular';
 
-export class index extends PureComponent {
+class index extends PureComponent {
   state = {
-    queries: {},
-    route: ''
+    query: '',
+    fillIngredients: true,
+    addRecipeInformation: true,
+    addRecipeNutrition: true,
+    number: 20
   };
 
-  handleClick = (e: MouseEvent) => {
+  handleClick = (): void => {
+    this.props.fetchRecipesBy('complexSearch', { params: this.state });
+  };
+
+  onChange = (e: FormEvent<HTMLInputElement>) => {
     e.preventDefault();
+    this.setState((prev) => {
+      return {
+        ...prev,
+        query: e.currentTarget.value
+      };
+    });
   };
 
   render() {
+    const { query } = this.state;
     return (
       <div>
         <div>
-          <h1>Search Recipes:</h1>
-          <select>
-            <option value={e.Params.search}>Search</option>
-            <option value={e.Params.complexSearch}>Complex Search</option>
-            <option value={e.Params.findByIngredients}>Find by Ingredients</option>
-            <option value={e.Params.findByNutrients}>Find by Nutrients</option>
-          </select>
+          <h1>Complex Search Recipes:</h1>
           <button onClick={this.handleClick}>Request</button>
         </div>
-        <div></div>
+        <div>
+          <label>Query</label>
+          <input name="query" type="text" onChange={this.onChange} value={query}></input>
+        </div>
       </div>
     );
   }
 }
 
-export default index;
+export default connect(null, spoonacular)(index);
