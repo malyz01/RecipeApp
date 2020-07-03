@@ -1,11 +1,18 @@
-import React, { PureComponent, FormEvent } from 'react';
-import { connect } from 'react-redux';
+import React, { PureComponent, ChangeEvent } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 
-import * as e from '../../enum/spoonacular';
-import * as i from '../../interfaces/spoonacular';
 import * as spoonacular from '../../store/actions/spoonacular';
 
-class index extends PureComponent {
+const mapDispatch = { ...spoonacular };
+const connector = connect(null, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+// If props are passdown
+// type Props = PropsFromRedux & {
+//   backgroundColor: string
+// }
+
+class index extends PureComponent<PropsFromRedux, any> {
   state = {
     query: '',
     fillIngredients: true,
@@ -14,11 +21,11 @@ class index extends PureComponent {
     number: 20
   };
 
-  handleClick = (): void => {
+  handleClick = () => {
     this.props.fetchRecipesBy('complexSearch', { params: this.state });
   };
 
-  onChange = (e: FormEvent<HTMLInputElement>) => {
+  onChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     e.persist();
     this.setState((prev) => {
@@ -32,18 +39,20 @@ class index extends PureComponent {
   render() {
     const { query } = this.state;
     return (
-      <div>
+      <div style={{ textAlign: 'center' }}>
         <div>
           <h1>Complex Search Recipes:</h1>
-          <button onClick={this.handleClick}>Request</button>
         </div>
         <div>
           <label>Query</label>
           <input name="query" type="text" onChange={this.onChange} value={query}></input>
         </div>
+        <p>
+          <button onClick={this.handleClick}>Send</button>
+        </p>
       </div>
     );
   }
 }
 
-export default connect(null, spoonacular)(index);
+export default connector(index);

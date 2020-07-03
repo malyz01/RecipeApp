@@ -22,3 +22,7 @@ export interface ISearch {
   limitLicense?: boolean;
   instructionsRequired?: boolean;
 }
+
+export interface IQueries {
+  params: {};
+}
