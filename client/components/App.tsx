@@ -3,7 +3,6 @@ import { HashRouter, Route } from 'react-router-dom';
 
 import Nav from './Nav';
 import Landing from './Landing';
-import Recipe from './Recipe';
 import { ISample } from '../interfaces/nav';
 
 const App = () => {
@@ -18,7 +17,6 @@ const App = () => {
     <HashRouter>
       <Nav sample={sample} />
       <Route exact path="/" component={Landing} />
-      <Route exact path="/recipe" component={Recipe} />
     </HashRouter>
   );
 };
