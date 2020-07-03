@@ -12,7 +12,8 @@ const Landing = (props) => {
     query: 'Chicken',
     excludeIngredients: 'peas',
     cuisine: '',
-    diet: ''
+    diet: '',
+    number: 20
   });
 
   const handleQuery = (e) => {
