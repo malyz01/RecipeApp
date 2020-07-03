@@ -20,10 +20,11 @@ class index extends PureComponent {
 
   onChange = (e: FormEvent<HTMLInputElement>) => {
     e.preventDefault();
+    e.persist();
     this.setState((prev) => {
       return {
         ...prev,
-        query: e.currentTarget.value
+        query: e.target.value
       };
     });
   };

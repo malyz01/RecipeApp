@@ -3,7 +3,7 @@ const validateEmail = (email) => {
   return re.test(email);
 };
 
-const toQuery = (req, body) => {
+const toQuery = (body) => {
   return {
     params: { ...body }
   };
