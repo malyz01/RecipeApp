@@ -19,6 +19,8 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
     query: '',
     minCalories: 0,
     maxCalories: 0,
+    minProtein: 0,
+    maxProtein: 0,
     fillIngredients: true,
     addRecipeInformation: true,
     addRecipeNutrition: true,
@@ -27,7 +29,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
 
   handleClick = () => {
     // Uncomment below to check all the properties, inside curly brace press ctrl + space
-    // this.setState({});
+    // this.setState({minProtein});
     this.props.fetchRecipesBy('complexSearch', { params: this.state });
   };
 
@@ -65,6 +67,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
           </div>
         </div>
         <p>Additional options:</p>
+
         <p>Calories</p>
         <div>
           <label>min</label>
@@ -82,6 +85,26 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
             type="number"
             onChange={this.onChange}
             value={this.state.maxCalories}
+          ></input>
+        </div>
+
+        <p>Protein</p>
+        <div>
+          <label>min</label>
+          <input
+            className="input"
+            name="minProtein"
+            type="number"
+            onChange={this.onChange}
+            value={this.state.minProtein}
+          ></input>
+          <label>max</label>
+          <input
+            className="input"
+            name="maxProtein"
+            type="number"
+            onChange={this.onChange}
+            value={this.state.maxProtein}
           ></input>
         </div>
 
