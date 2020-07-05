@@ -26,7 +26,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
 
   handleClick = () => {
     // Uncomment below to check all the properties, inside curly brace press ctrl + space
-    this.setState({});
+    // this.setState({});
     this.props.fetchRecipesBy('complexSearch', { params: this.state });
   };
 
@@ -36,7 +36,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
     this.setState((prev) => {
       return {
         ...prev,
-        query: e.target.value
+        [e.target.name]: e.target.value
       };
     });
   };
@@ -51,6 +51,15 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
         <div>
           <label>Query</label>
           <input name="query" type="text" onChange={this.onChange} value={query}></input>
+        </div>
+        <div>
+          <label>Results: </label>
+          <input
+            name="number"
+            type="number"
+            onChange={this.onChange}
+            value={this.state.number}
+          ></input>
         </div>
         <p>Additional options:</p>
         <p>Calories</p>
