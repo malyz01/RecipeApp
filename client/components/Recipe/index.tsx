@@ -48,18 +48,20 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
         <div>
           <h1>Complex Search Recipes:</h1>
         </div>
-        <div>
-          <label>Query</label>
-          <input name="query" type="text" onChange={this.onChange} value={query}></input>
-        </div>
-        <div>
-          <label>Results: </label>
-          <input
-            name="number"
-            type="number"
-            onChange={this.onChange}
-            value={this.state.number}
-          ></input>
+        <div style={{ textAlign: 'justify', width: 300, margin: 'auto' }}>
+          <div style={{ display: 'flex', marginBottom: 6 }}>
+            <div style={{ minWidth: 100 }}>Query:</div>
+            <input name="query" type="text" onChange={this.onChange} value={query}></input>
+          </div>
+          <div style={{ display: 'flex', marginBottom: 6 }}>
+            <div style={{ minWidth: 100 }}>Results: </div>
+            <input
+              name="number"
+              type="number"
+              onChange={this.onChange}
+              value={this.state.number}
+            ></input>
+          </div>
         </div>
         <p>Additional options:</p>
         <p>Calories</p>
