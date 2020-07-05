@@ -13,6 +13,4 @@
 > - [ ] Get Api key from spoonacular
 > - [ ] add .env file
 
-> Pull requests
-> - For changes: pull a request from your dev branch to this repo's dev branch
-> - Final changes to this repo will be merge to master branch
+> Still figuring out what's the best way to have all the contributions listed
