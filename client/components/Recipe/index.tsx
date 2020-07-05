@@ -1,5 +1,6 @@
 import React, { PureComponent, ChangeEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+import './style.css';
 
 import * as i from '../../interfaces/spoonacular';
 import * as spoonacular from '../../store/actions/spoonacular';
@@ -68,6 +69,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
         <div>
           <label>min</label>
           <input
+            className="input"
             name="minCalories"
             type="number"
             onChange={this.onChange}
@@ -75,6 +77,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
           ></input>
           <label>max</label>
           <input
+            className="input"
             name="maxCalories"
             type="number"
             onChange={this.onChange}
