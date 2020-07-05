@@ -108,7 +108,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
             name="maxCarbs"
             type="number"
             onChange={this.onChange}
-            value={this.state.minCarbs}
+            value={this.state.maxCarbs}
           ></input>
         </div>
 
