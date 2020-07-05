@@ -16,6 +16,8 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
   state = {
     query: '',
+    minCalories: 0,
+    maxCalories: 0,
     fillIngredients: true,
     addRecipeInformation: true,
     addRecipeNutrition: true,
@@ -24,7 +26,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
 
   handleClick = () => {
     // Uncomment below to check all the properties, inside curly brace press ctrl + space
-    // this.setState({})
+    this.setState({});
     this.props.fetchRecipesBy('complexSearch', { params: this.state });
   };
 
@@ -50,6 +52,25 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
           <label>Query</label>
           <input name="query" type="text" onChange={this.onChange} value={query}></input>
         </div>
+        <p>Additional options:</p>
+        <p>Calories</p>
+        <div>
+          <label>min</label>
+          <input
+            name="minCalories"
+            type="number"
+            onChange={this.onChange}
+            value={this.state.minCalories}
+          ></input>
+          <label>max</label>
+          <input
+            name="maxCalories"
+            type="number"
+            onChange={this.onChange}
+            value={this.state.maxCalories}
+          ></input>
+        </div>
+
         <p>
           <button onClick={this.handleClick}>Send</button>
         </p>
