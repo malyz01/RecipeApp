@@ -20,7 +20,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
   state = {
     query: '',
     minCalories: 0,
-    maxCalories: 100,
+    maxCalories: 200,
     minCarbs: 0,
     maxCarbs: 100,
     minProtein: 0,
@@ -33,10 +33,11 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
     number: 5
   };
 
-  handleClick = () => {
+  handleClick = async () => {
     // Uncomment below to check all the properties, inside curly brace press ctrl + space
     // this.setState({minFat});
-    this.props.fetchRecipesBy('complexSearch', { params: this.state });
+    await this.props.fetchRecipesBy('complexSearch', { params: this.state });
+    localStorage.setItem('result', JSON.stringify(this.props.recipes));
   };
 
   onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +52,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
   };
 
   render() {
-    console.log(this.props.recipes.length);
+    const lastResult = JSON.parse(localStorage.getItem('result'));
     const { query } = this.state;
     return (
       <div style={{ textAlign: 'center' }}>
@@ -166,12 +167,13 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
         </div>
 
         <p>
-          <button onClick={this.handleClick}>Send</button>
+          <button onClick={this.handleClick}>Get Recipes</button>
         </p>
 
         <div className="recipeContainer">
-          {this.props.recipes.length > 0 &&
-            this.props.recipes.map((r, i) => <Recipe key={i} data={r} />)}
+          {this.props.recipes.length > 0
+            ? this.props.recipes.map((r, i) => <Recipe key={i} data={r} />)
+            : lastResult.map((r, i) => <Recipe key={i} data={r} />)}
         </div>
       </div>
     );
