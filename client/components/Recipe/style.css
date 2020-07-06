@@ -4,6 +4,17 @@
   text-align: center;
 }
 
+.optionsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.optionContainer {
+  border: 0.5px solid black;
+  margin: 0 0.5rem;
+  padding: 0 0 0.7rem 0.7rem;
+}
+
 .recipeContainer {
   display: flex;
 }
