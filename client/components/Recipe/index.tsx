@@ -54,7 +54,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
   };
 
   render() {
-    const lastResult = JSON.parse(localStorage.getItem('result'));
+    const lastResult = JSON.parse(localStorage.getItem('result')) || [];
     const { query, includeIngredients, excludeIngredients } = this.state;
     return (
       <div style={{ textAlign: 'center' }}>
@@ -94,6 +94,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
             ></input>
           </div>
         </div>
+
         <p>Additional options:</p>
 
         <div className="optionsContainer">
@@ -191,9 +192,11 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
         </p>
 
         <div className="recipeContainer">
-          {this.props.recipes.length > 0
+          {this.props.recipes.length
             ? this.props.recipes.map((r, i) => <Recipe key={i} data={r} />)
-            : lastResult.map((r, i) => <Recipe key={i} data={r} />)}
+            : lastResult.length
+            ? lastResult.map((r, i) => <Recipe key={i} data={r} />)
+            : ''}
         </div>
       </div>
     );
