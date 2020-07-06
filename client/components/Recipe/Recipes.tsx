@@ -10,7 +10,7 @@ const Recipes = ({ data }) => {
         <img src={data.image} alt="pics" />
       </div>
       <p>
-        <a href={data.spoonacularSourceUrl}></a>
+        <a href={data.spoonacularSourceUrl || data.sourceUrl}>{data.title}</a>
       </p>
     </div>
   );
