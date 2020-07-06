@@ -4,9 +4,11 @@ import './style.css';
 
 import * as i from '../../interfaces/spoonacular';
 import * as spoonacular from '../../store/actions/spoonacular';
+import Recipe from './Recipes';
 
+const mapState = (state) => ({ recipes: state.spoonacular.recipes.data.results });
 const mapDispatch = { ...spoonacular };
-const connector = connect(null, mapDispatch);
+const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 // If props are passdown
@@ -18,17 +20,17 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
   state = {
     query: '',
     minCalories: 0,
-    maxCalories: 0,
+    maxCalories: 100,
     minCarbs: 0,
-    maxCarbs: 0,
+    maxCarbs: 100,
     minProtein: 0,
-    maxProtein: 0,
+    maxProtein: 100,
     minFat: 0,
-    maxFat: 0,
+    maxFat: 20,
     fillIngredients: true,
     addRecipeInformation: true,
     addRecipeNutrition: true,
-    number: 20
+    number: 5
   };
 
   handleClick = () => {
@@ -49,6 +51,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
   };
 
   render() {
+    console.log(this.props.recipes.length);
     const { query } = this.state;
     return (
       <div style={{ textAlign: 'center' }}>
@@ -155,6 +158,9 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
         <p>
           <button onClick={this.handleClick}>Send</button>
         </p>
+
+        {this.props.recipes.length > 0 &&
+          this.props.recipes.map((r, i) => <Recipe key={i} data={r} />)}
       </div>
     );
   }

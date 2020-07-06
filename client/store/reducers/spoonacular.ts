@@ -4,7 +4,9 @@ import * as i from './interfaces/spoonacular';
 const INITIAL: i.IState = {
   recipes: {
     pending: true,
-    data: {}
+    data: {
+      results: []
+    }
   },
   recipe: {
     pending: true,
