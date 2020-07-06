@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.recipeContainer {
+  display: flex;
+}
+
 .resultContainer {
   margin: 1rem auto;
 }

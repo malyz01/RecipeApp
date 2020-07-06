@@ -159,8 +159,10 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
           <button onClick={this.handleClick}>Send</button>
         </p>
 
-        {this.props.recipes.length > 0 &&
-          this.props.recipes.map((r, i) => <Recipe key={i} data={r} />)}
+        <div className="recipeContainer">
+          {this.props.recipes.length > 0 &&
+            this.props.recipes.map((r, i) => <Recipe key={i} data={r} />)}
+        </div>
       </div>
     );
   }
