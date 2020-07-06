@@ -19,6 +19,8 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
   state = {
     query: '',
+    excludeIngredients: '',
+    includeIngredients: '',
     minCalories: 0,
     maxCalories: 200,
     minCarbs: 0,
@@ -35,7 +37,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
 
   handleClick = async () => {
     // Uncomment below to check all the properties, inside curly brace press ctrl + space
-    // this.setState({minFat});
+    // this.setState({includeIngredients});
     await this.props.fetchRecipesBy('complexSearch', { params: this.state });
     localStorage.setItem('result', JSON.stringify(this.props.recipes));
   };
@@ -53,7 +55,7 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
 
   render() {
     const lastResult = JSON.parse(localStorage.getItem('result'));
-    const { query } = this.state;
+    const { query, includeIngredients, excludeIngredients } = this.state;
     return (
       <div style={{ textAlign: 'center' }}>
         <div>
@@ -61,8 +63,26 @@ class index extends PureComponent<PropsFromRedux, i.IComplexSearch> {
         </div>
         <div style={{ textAlign: 'justify', width: 300, margin: 'auto' }}>
           <div style={{ display: 'flex', marginBottom: 6 }}>
-            <div style={{ minWidth: 100 }}>Query:</div>
+            <div style={{ minWidth: 100 }}>Food:</div>
             <input name="query" type="text" onChange={this.onChange} value={query}></input>
+          </div>
+          <div style={{ display: 'flex', marginBottom: 6 }}>
+            <div style={{ minWidth: 100 }}>Exclude:</div>
+            <input
+              name="excludeIngredients"
+              type="text"
+              onChange={this.onChange}
+              value={excludeIngredients}
+            ></input>
+          </div>
+          <div style={{ display: 'flex', marginBottom: 6 }}>
+            <div style={{ minWidth: 100 }}>Include:</div>
+            <input
+              name="includeIngredients"
+              type="text"
+              onChange={this.onChange}
+              value={includeIngredients}
+            ></input>
           </div>
           <div style={{ display: 'flex', marginBottom: 6 }}>
             <div style={{ minWidth: 100 }}>Results: </div>
