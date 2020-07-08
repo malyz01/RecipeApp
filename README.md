@@ -1,15 +1,14 @@
+* UNDER DEVELOPMENT
+
 ## Recipe App
 
 - Beta repo for recipe app
 
-## Developers
+### Main Features:
 
-### Spoonacular
- - [ ] Create spoonacular account
- - [ ] Get Api key from spoonacular
- - [ ] add .env file
-
-
-
-
- 
+- Basic recipe search
+- Complex recipe search
+  - Include ingredients
+  - Exclude ingredients
+  - Based on nutrients
+- Generate meal plan
