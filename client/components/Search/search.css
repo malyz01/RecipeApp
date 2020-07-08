@@ -1,5 +1,15 @@
-.searchMainContainer {
-  padding: 0 0.5em;
+.foodSearch {
+  width: 100%;
+  box-sizing: border-box
+}
+
+.ingredientSearch {
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchButton {
+  width: 100%
 }
 
 .searchHeading {
@@ -10,6 +20,6 @@
   text-align: center;
 }
 
-.foodSearch {
-  width: 95%;
+.searchMainContainer {
+  padding: 0 0.5em;
 }
