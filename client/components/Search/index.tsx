@@ -1,5 +1,6 @@
 import React from 'react'
 
+import './search.css'
 
 const index = () => {
   return (
@@ -21,6 +22,9 @@ const index = () => {
           <input type='text' placeholder='e.g. Coriander'></input>
           <button>Add</button>
           <a>clear all</a>
+        </div>
+        <div className='NutrionalInfo'>
+          <h3>Nutrional Information</h3>
         </div>
       </div>
     </div>
