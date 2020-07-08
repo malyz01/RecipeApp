@@ -5,10 +5,14 @@ import './search.css'
 const index = () => {
   return (
     <div className='searchMainContainer'>
+
       <div className='searchRecipe'>
-        <h3>Search by Recipe Name</h3>
-        <input type='text' placeholder='e.g. Chicken Curry'></input>
+        <h3 className='searchHeading'>Search by Recipe Name</h3>
+        <div className='searchInput'>
+          <input className='foodSearch' type='text' placeholder='e.g. Chicken Curry'></input>
+        </div>
       </div>
+
       <div className='searchIngredients'>
         <h3>Search by Ingredients</h3>
         <div className='ingredientFilter'>
@@ -23,9 +27,15 @@ const index = () => {
           <button>Add</button>
           <a>clear all</a>
         </div>
+
         <div className='NutrionalInfo'>
           <h3>Nutrional Information</h3>
         </div>
+
+        <div className='searchButton'>
+          <button>Search</button>
+        </div>
+
       </div>
     </div>
   )

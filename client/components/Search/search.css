@@ -1,0 +1,15 @@
+.searchMainContainer {
+  padding: 0 0.5em;
+}
+
+.searchHeading {
+  margin-bottom: 0;
+}
+
+.searchInput {
+  text-align: center;
+}
+
+.foodSearch {
+  width: 95%;
+}
