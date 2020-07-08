@@ -1,6 +1,6 @@
 * UNDER DEVELOPMENT
 
-## Recipe App
+## Recipe App (Stack: React - Typescript, NodeJS, Express, MongoDB)
 
 - Beta repo for recipe app
 
