@@ -6,12 +6,12 @@ const index = () => {
   return (
     <div className='searchMainContainer'>
 
-      {/* <div className='searchRecipe'> */}
-      <h3 className='searchHeading'>Search by Recipe Name</h3>
-      <div className='searchInput'>
-        <input className='foodSearch' type='text' placeholder='e.g. Chicken Curry'></input>
+      <div className='searchRecipe'>
+        <h3 className='searchHeading'>Search by Recipe Name</h3>
+        <div className='searchInput'>
+          <input className='foodSearch' type='text' placeholder='e.g. Chicken Curry'></input>
+        </div>
       </div>
-      {/* </div> */}
 
       <div className='searchIngredients'>
         <h3>Search by Ingredients</h3>
