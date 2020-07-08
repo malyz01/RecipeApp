@@ -1,18 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import Slider from '@material-ui/core/Slider';
 
+import { IComplexSearch } from '../../interfaces/spoonacular';
 import './search.css';
 
 const index = () => {
-  const [data, setData] = useState({});
-  const [nutrients, setNutrients] = useState({});
+  const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
+  const [ingredients, setIngredients] = useState<{}>({});
+  const [nutrients, setNutrients] = useState<{}>({});
 
   const handleChange = (nutri: string) => (event: any, newValue: number | number[]) => {
     setNutrients((prev) => ({
       ...prev,
-      [nutri]: newValue as number
+      [nutri]: newValue as number[]
     }));
   };
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {};
+
+  const handleIngredients = (option: string, action: string) => () => {
+    let ingredients = searchQuery[action] || [];
+    if (option === 'add') ingredients.push(ingredients[action]);
+    if (option === 'del' && ingredients.length)
+      ingredients = ingredients.filter((i) => i !== ingredients[action]);
+
+    setSearchQuery((prev) => ({
+      ...prev,
+      [action]: ingredients
+    }));
+  };
+
+  console.log(ingredients);
 
   return (
     <div className="searchMainContainer">
@@ -29,8 +47,8 @@ const index = () => {
           <h4 className="searchHeading">Included Ingredients:</h4>
           <div className="ingredientSearch">
             <div>
-              <input type="text" placeholder="e.g. Potato"></input>
-              <button>Add</button>
+              <input name="includeIngredients" type="text" placeholder="e.g. Potato"></input>
+              <button onClick={handleIngredients('add', 'includeIngredients')}>Add</button>
             </div>
             <div>clear all</div>
           </div>
@@ -41,7 +59,7 @@ const index = () => {
           <div className="ingredientSearch">
             <div>
               <input type="text" placeholder="e.g. Coriander"></input>
-              <button>Add</button>
+              <button name="excludeIngredients">Add</button>
             </div>
             <div>clear all</div>
           </div>
