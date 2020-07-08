@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from './Slider';
 
 import './search.css';
 
 const index = () => {
+  const [protein, setProtein] = useState<number[]>([0, 10]);
+
+  const getVal = (val: number[]) => {
+    setProtein(val);
+  };
+
+  console.log(protein);
   return (
     <div className="searchMainContainer">
       <div className="searchRecipe">
@@ -40,7 +47,7 @@ const index = () => {
 
       <div className="NutrionalInfo">
         <h3>Nutrional Information</h3>
-        <Slider />
+        <Slider name="Protein" getValue={getVal} />
       </div>
 
       <div>
