@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import Slider from './Slider';
+import Slider from '@material-ui/core/Slider';
 
 import './search.css';
 
 const index = () => {
-  const [protein, setProtein] = useState<number[]>([0, 10]);
+  const [data, setData] = useState({});
+  const [nutrients, setNutrients] = useState({});
 
-  const getVal = (val: number[]) => {
-    setProtein(val);
+  const handleChange = (nutri: string) => (event: any, newValue: number | number[]) => {
+    setNutrients((prev) => ({
+      ...prev,
+      [nutri]: newValue as number
+    }));
   };
 
-  console.log(protein);
   return (
     <div className="searchMainContainer">
       <div className="searchRecipe">
@@ -47,7 +50,22 @@ const index = () => {
 
       <div className="NutrionalInfo">
         <h3>Nutrional Information</h3>
-        <Slider name="Protein" getValue={getVal} />
+        <Slider
+          color="primary"
+          defaultValue={[0, 10]}
+          max={200}
+          onChange={handleChange('Protein')}
+          valueLabelDisplay="auto"
+          aria-labelledby="Protein range"
+        />
+        <Slider
+          color="primary"
+          defaultValue={[0, 10]}
+          max={500}
+          onChange={handleChange('Carbs')}
+          valueLabelDisplay="auto"
+          aria-labelledby="Carbs range"
+        />
       </div>
 
       <div>
