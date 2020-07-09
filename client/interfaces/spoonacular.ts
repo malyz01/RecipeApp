@@ -30,8 +30,8 @@ export interface IComplexSearch {
   diet?: string;
   intolerances?: string;
   equipment?: string;
-  includeIngredients?: string;
-  excludeIngredients?: string;
+  includeIngredients?: string[] | string;
+  excludeIngredients?: string[] | string;
   type?: string;
   instructionsRequired?: boolean;
   fillIngredients?: boolean;
