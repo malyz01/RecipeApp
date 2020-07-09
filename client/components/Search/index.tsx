@@ -26,11 +26,11 @@ const index = () => {
     setIngredients((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleIngredients = (option: string, include: boolean) => () => {
+  const handleIngredients = (option: string, include: boolean, filter?: string) => () => {
     const action = include ? 'includeIngredients' : 'excludeIngredients';
     let newVal: string[] = (searchQuery[action] as string[]) || [];
     if (option === 'add') newVal.push(ingredients[action]);
-    if (option === 'del' && newVal.length) newVal = newVal.filter((i) => i !== ingredients[action]);
+    if (option === 'del' && newVal.length) newVal = newVal.filter((i) => i !== filter);
 
     setSearchQuery((prev) => ({ ...prev, [action]: newVal }));
     setIngredients((prev) => ({ ...prev, [action]: '' }));
@@ -66,7 +66,11 @@ const index = () => {
             {searchQuery.includeIngredients &&
               Array.isArray(searchQuery.includeIngredients) &&
               searchQuery.includeIngredients.map((ingredient, index) => (
-                <Ingredient key={index} name={ingredient} />
+                <Ingredient
+                  key={index}
+                  name={ingredient}
+                  onClick={handleIngredients('del', true, ingredient)}
+                />
               ))}
           </Box>
         </div>
@@ -90,7 +94,11 @@ const index = () => {
             {searchQuery.excludeIngredients &&
               Array.isArray(searchQuery.excludeIngredients) &&
               searchQuery.excludeIngredients.map((ingredient, index) => (
-                <Ingredient key={index} name={ingredient} />
+                <Ingredient
+                  key={index}
+                  name={ingredient}
+                  onClick={handleIngredients('del', false, ingredient)}
+                />
               ))}
           </Box>
         </div>

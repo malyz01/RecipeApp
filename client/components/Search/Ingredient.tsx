@@ -14,7 +14,7 @@ const Ingredient = (props: IngredientProp) => {
   return (
     <Paper className={c.paper} square={false} elevation={4}>
       <span className={c.span}>{props.name}</span>
-      <HighlightOffIcon onClick={() => alert(props.name)} className={c.icon} />
+      <HighlightOffIcon onClick={() => props.onClick()} className={c.icon} />
     </Paper>
   );
 };
