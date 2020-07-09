@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './Theme';
 
 import App from './components/App';
 import reducers from './store/reducers';
@@ -19,7 +21,9 @@ const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </Provider>,
     document.getElementById('app')
   );
