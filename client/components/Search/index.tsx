@@ -80,7 +80,7 @@ const index = () => {
             <div>clear all</div>
           </div>
           <div>
-            {searchQuery.includeIngredients && searchQuery.includeIngredients.map((ingredient, index) =>
+            {searchQuery.excludeIngredients && searchQuery.excludeIngredients.map((ingredient, index) =>
               <div key={index}>
                 {ingredient}
               </div>)}
