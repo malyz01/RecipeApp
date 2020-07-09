@@ -6,7 +6,10 @@ import './search.css';
 
 const index = () => {
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
-  const [ingredients, setIngredients] = useState({ includeIngredients: '', excludeIngredients: '' });
+  const [ingredients, setIngredients] = useState({
+    includeIngredients: '',
+    excludeIngredients: ''
+  });
   const [nutrients, setNutrients] = useState<{}>({});
 
   const handleSlider = (nutri: string) => (event: any, newValue: number | number[]) => {
@@ -27,7 +30,7 @@ const index = () => {
     if (option === 'del' && newVal.length) newVal = newVal.filter((i) => i !== ingredients[action]);
 
     setSearchQuery((prev) => ({ ...prev, [action]: newVal }));
-    setIngredients((prev) => ({ ...prev, [action]: '' }))
+    setIngredients((prev) => ({ ...prev, [action]: '' }));
   };
 
   return (
@@ -57,10 +60,11 @@ const index = () => {
             <div>clear all</div>
           </div>
           <div>
-            {searchQuery.includeIngredients && searchQuery.includeIngredients.map((ingredient, index) =>
-              <div key={index}>
-                {ingredient}
-              </div>)}
+            {searchQuery.includeIngredients &&
+              Array.isArray(searchQuery.includeIngredients) &&
+              searchQuery.includeIngredients.map((ingredient, index) => (
+                <div key={index}>{ingredient}</div>
+              ))}
           </div>
         </div>
 
@@ -80,10 +84,11 @@ const index = () => {
             <div>clear all</div>
           </div>
           <div>
-            {searchQuery.excludeIngredients && searchQuery.excludeIngredients.map((ingredient, index) =>
-              <div key={index}>
-                {ingredient}
-              </div>)}
+            {searchQuery.excludeIngredients &&
+              Array.isArray(searchQuery.excludeIngredients) &&
+              searchQuery.excludeIngredients.map((ingredient, index) => (
+                <div key={index}>{ingredient}</div>
+              ))}
           </div>
         </div>
       </div>
