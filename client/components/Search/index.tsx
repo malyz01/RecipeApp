@@ -6,7 +6,7 @@ import './search.css';
 
 const index = () => {
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
-  const [ingredients, setIngredients] = useState<{}>({});
+  const [ingredients, setIngredients] = useState({ includeIngredients: '', excludeIngredients: '' });
   const [nutrients, setNutrients] = useState<{}>({});
 
   const handleSlider = (nutri: string) => (event: any, newValue: number | number[]) => {
@@ -27,6 +27,7 @@ const index = () => {
     if (option === 'del' && newVal.length) newVal = newVal.filter((i) => i !== ingredients[action]);
 
     setSearchQuery((prev) => ({ ...prev, [action]: newVal }));
+    setIngredients((prev) => ({ ...prev, [action]: '' }))
   };
 
   return (
@@ -49,6 +50,7 @@ const index = () => {
                 onChange={onChange}
                 type="text"
                 placeholder="e.g. Potato"
+                value={ingredients.includeIngredients}
               ></input>
               <button onClick={handleIngredients('add', 'includeIngredients')}>Add</button>
             </div>
@@ -65,6 +67,7 @@ const index = () => {
                 onChange={onChange}
                 type="text"
                 placeholder="e.g. Coriander"
+                value={ingredients.excludeIngredients}
               ></input>
               <button onClick={handleIngredients('add', 'excludeIngredients')}>Add</button>
             </div>
