@@ -55,6 +55,12 @@ const index = () => {
               <button onClick={handleIngredients('add', 'includeIngredients')}>Add</button>
             </div>
             <div>clear all</div>
+            <div>
+              {searchQuery.includeIngredients && searchQuery.includeIngredients.map((ingredient, index) =>
+                <div key={index}>
+                  {ingredient}
+                </div>)}
+            </div>
           </div>
         </div>
 
@@ -72,6 +78,12 @@ const index = () => {
               <button onClick={handleIngredients('add', 'excludeIngredients')}>Add</button>
             </div>
             <div>clear all</div>
+          </div>
+          <div>
+            {searchQuery.includeIngredients && searchQuery.includeIngredients.map((ingredient, index) =>
+              <div key={index}>
+                {ingredient}
+              </div>)}
           </div>
         </div>
       </div>
