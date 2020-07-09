@@ -1,5 +1,6 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 import { ingredientStyle } from './styles';
 
@@ -12,7 +13,8 @@ const Ingredient = (props: IngredientProp) => {
   const c = ingredientStyle();
   return (
     <Paper className={c.paper} square={false} elevation={4}>
-      {props.name}
+      <span className={c.span}>{props.name}</span>
+      <HighlightOffIcon onClick={() => alert(props.name)} className={c.icon} />
     </Paper>
   );
 };
