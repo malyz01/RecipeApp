@@ -1,8 +1,10 @@
 import React, { useState, ChangeEvent } from 'react';
+import Box from '@material-ui/core/Box';
 import Slider from '@material-ui/core/Slider';
-
-import { IComplexSearch } from '../../interfaces/spoonacular';
 import './search.css';
+
+import Ingredient from './Ingredient';
+import { IComplexSearch } from '../../interfaces/spoonacular';
 
 const index = () => {
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
@@ -59,13 +61,13 @@ const index = () => {
             </div>
             <div>clear all</div>
           </div>
-          <div>
+          <Box display="flex">
             {searchQuery.includeIngredients &&
               Array.isArray(searchQuery.includeIngredients) &&
               searchQuery.includeIngredients.map((ingredient, index) => (
-                <div key={index}>{ingredient}</div>
+                <Ingredient key={index} name={ingredient} />
               ))}
-          </div>
+          </Box>
         </div>
 
         <div className="ingredientFilter">
