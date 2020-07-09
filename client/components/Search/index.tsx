@@ -26,8 +26,9 @@ const index = () => {
     setIngredients((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleIngredients = (option: string, action: string) => () => {
-    let newVal = searchQuery[action] || [];
+  const handleIngredients = (option: string, include: boolean) => () => {
+    const action = include ? 'includeIngredients' : 'excludeIngredients';
+    let newVal: string[] = (searchQuery[action] as string[]) || [];
     if (option === 'add') newVal.push(ingredients[action]);
     if (option === 'del' && newVal.length) newVal = newVal.filter((i) => i !== ingredients[action]);
 
@@ -57,7 +58,7 @@ const index = () => {
                 placeholder="e.g. Potato"
                 value={ingredients.includeIngredients}
               ></input>
-              <button onClick={handleIngredients('add', 'includeIngredients')}>Add</button>
+              <button onClick={handleIngredients('add', true)}>Add</button>
             </div>
             <div>clear all</div>
           </div>
@@ -81,17 +82,17 @@ const index = () => {
                 placeholder="e.g. Coriander"
                 value={ingredients.excludeIngredients}
               ></input>
-              <button onClick={handleIngredients('add', 'excludeIngredients')}>Add</button>
+              <button onClick={handleIngredients('add', false)}>Add</button>
             </div>
             <div>clear all</div>
           </div>
-          <div>
+          <Box display="flex">
             {searchQuery.excludeIngredients &&
               Array.isArray(searchQuery.excludeIngredients) &&
               searchQuery.excludeIngredients.map((ingredient, index) => (
-                <div key={index}>{ingredient}</div>
+                <Ingredient key={index} name={ingredient} />
               ))}
-          </div>
+          </Box>
         </div>
       </div>
 
