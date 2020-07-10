@@ -32,7 +32,7 @@ const index = () => {
 
   const onSubmit = () => {
     try {
-      console.log(v(searchQuery));
+      console.log(v(searchQuery, nutrients));
     } catch (err) {
       alert(err.message);
     }
