@@ -5,7 +5,8 @@ import './search.css';
 
 import Ingredient from './Ingredient';
 import { IComplexSearch } from '../../interfaces/spoonacular';
-import v from './validate';
+import { ENutrients } from '../../enum/spoonacular';
+import validate from './validate';
 
 const index = () => {
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
@@ -32,7 +33,7 @@ const index = () => {
 
   const onSubmit = () => {
     try {
-      console.log(v(searchQuery, nutrients));
+      console.log(validate(searchQuery, nutrients));
     } catch (err) {
       alert(err.message);
     }
@@ -125,6 +126,11 @@ const index = () => {
 
       <div className="NutrionalInfo">
         <h3>Nutrional Information</h3>
+        <select>
+          {Object.values(ENutrients).map((n) => (
+            <option key={n}>{n}</option>
+          ))}
+        </select>
         <Slider
           color="primary"
           defaultValue={[0, 10]}
