@@ -29,7 +29,7 @@ const index = () => {
   const handleIngredients = (option: string, include: boolean, filter?: string) => () => {
     const action = include ? 'includeIngredients' : 'excludeIngredients';
     let newVal: string[] = (searchQuery[action] as string[]) || [];
-    if (option === 'add') newVal.push(ingredients[action]);
+    if (option === 'add' && ingredients[action] !== '') newVal.push(ingredients[action]);
     if (option === 'del' && newVal.length) newVal = newVal.filter((i) => i !== filter);
 
     setSearchQuery((prev) => ({ ...prev, [action]: newVal }));
