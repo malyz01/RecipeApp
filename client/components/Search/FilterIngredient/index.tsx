@@ -17,6 +17,8 @@ type IProps = {
 
 const index = ({ search, handleSearch, include }: IProps) => {
   const action = include ? 'includeIngredients' : 'excludeIngredients';
+  const query: string[] = (search[action] as string[]) || [];
+  const name = action.replace(/([a-z])([A-Z][a-z]+)/g, '$1');
   const [ingredients, setIngredients] = useState({
     includeIngredients: '',
     excludeIngredients: ''
@@ -38,24 +40,24 @@ const index = ({ search, handleSearch, include }: IProps) => {
 
   return (
     <div className="ingredientFilter">
-      <h4 className="searchHeading">Included Ingredients:</h4>
+      <h4 className="searchHeading">{name} Ingredients:</h4>
       <div className="ingredientSearch">
         <div>
           <input
-            name="includeIngredients"
+            name={action}
             onChange={onChange}
             type="text"
-            placeholder="e.g. Potato"
-            value={ingredients.includeIngredients}
+            placeholder={`e.g. ${include ? 'Potato' : 'Coriander'} `}
+            value={ingredients[action]}
           ></input>
           <button onClick={handleIngredients('add')}>Add</button>
         </div>
         <div>clear all</div>
       </div>
       <Box display="flex">
-        {search.includeIngredients &&
-          Array.isArray(search.includeIngredients) &&
-          search.includeIngredients.map((ingredient, index) => (
+        {query &&
+          Array.isArray(query) &&
+          query.map((ingredient, index) => (
             <Ingredient
               key={index}
               name={ingredient}
