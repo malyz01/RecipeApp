@@ -26,6 +26,10 @@ const index = () => {
     setIngredients((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const onSubmit = () => {
+    console.log(searchQuery);
+  };
+
   const handleIngredients = (option: string, include: boolean, filter?: string) => () => {
     const action = include ? 'includeIngredients' : 'excludeIngredients';
     let newVal: string[] = (searchQuery[action] as string[]) || [];
@@ -125,7 +129,9 @@ const index = () => {
       </div>
 
       <div>
-        <button className="searchButton">Search</button>
+        <button onClick={onSubmit} className="searchButton">
+          Search
+        </button>
       </div>
     </div>
   );
