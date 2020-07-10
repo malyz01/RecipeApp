@@ -1,17 +1,18 @@
 import { IComplexSearch } from '../../interfaces/spoonacular';
 
 export default (q: IComplexSearch) => {
-  if (q.query === '') {
-    throw new Error('Cannot be empty');
+  let data = { ...q };
+  if (data.query === '') {
+    throw new Error('Please enter Recipe name');
   }
 
-  if (Array.isArray(q.includeIngredients)) {
-    q.includeIngredients = q.includeIngredients.join(',');
+  if (Array.isArray(data.includeIngredients)) {
+    data.includeIngredients = data.includeIngredients.join(',');
   }
 
-  if (Array.isArray(q.excludeIngredients)) {
-    q.excludeIngredients = q.excludeIngredients.join(',');
+  if (Array.isArray(data.excludeIngredients)) {
+    data.excludeIngredients = data.excludeIngredients.join(',');
   }
 
-  return q;
+  return data;
 };

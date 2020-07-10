@@ -5,6 +5,7 @@ import './search.css';
 
 import Ingredient from './Ingredient';
 import { IComplexSearch } from '../../interfaces/spoonacular';
+import v from './validate';
 
 const index = () => {
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
@@ -23,11 +24,18 @@ const index = () => {
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();
+    if (e.target.name.includes('query')) {
+      return setSearchQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
     setIngredients((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const onSubmit = () => {
-    console.log(searchQuery);
+    try {
+      console.log(v(searchQuery));
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   const handleIngredients = (option: string, include: boolean, filter?: string) => () => {
@@ -45,7 +53,14 @@ const index = () => {
       <div className="searchRecipe">
         <h3 className="searchHeading">Search by Recipe Name</h3>
         <div className="searchInput">
-          <input className="foodSearch" type="text" placeholder="e.g. Chicken Curry"></input>
+          <input
+            className="foodSearch"
+            name="query"
+            onChange={onChange}
+            value={searchQuery.query}
+            type="text"
+            placeholder="e.g. Chicken Curry"
+          ></input>
         </div>
       </div>
 
