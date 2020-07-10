@@ -4,6 +4,7 @@ import Slider from '@material-ui/core/Slider';
 import './search.css';
 
 import Ingredient from './Ingredient';
+import FilterIngredient, { IHandleSearch } from './FilterIngredient';
 import { IComplexSearch } from '../../interfaces/spoonacular';
 import { ENutrients } from '../../enum/spoonacular';
 import validate from './validate';
@@ -21,6 +22,10 @@ const index = () => {
       ...prev,
       [nutri]: newValue as number[]
     }));
+  };
+
+  const handleFilterIngrt = (prop: IHandleSearch) => {
+    setSearchQuery((prev) => ({ ...prev, [prop.key]: prop.val }));
   };
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -67,6 +72,7 @@ const index = () => {
 
       <div className="searchIngredients">
         <h3>Search by Ingredients</h3>
+        <FilterIngredient search={searchQuery} handleSearch={handleFilterIngrt} include={true} />
         <div className="ingredientFilter">
           <h4 className="searchHeading">Included Ingredients:</h4>
           <div className="ingredientSearch">

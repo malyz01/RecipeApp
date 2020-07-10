@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import { IComplexSearch } from '../../../interfaces/spoonacular';
 import Ingredient from './Ingredient';
 
-interface IHandleSearch {
+export interface IHandleSearch {
   key: string;
   val: string[];
 }
