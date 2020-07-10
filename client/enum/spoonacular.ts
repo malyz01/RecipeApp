@@ -39,3 +39,11 @@ export enum EQComplex {
   limitLicense = 'limitLicense',
   instructionsRequired = 'instructionsRequired'
 }
+
+export enum ENutrients {
+  carbs = 'Carbs',
+  protein = 'Protein',
+  calories = 'Calories',
+  fat = 'Fat',
+  fiber = 'Fiber'
+}
