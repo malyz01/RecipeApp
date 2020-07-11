@@ -5,6 +5,7 @@ import Slider from '@material-ui/core/Slider';
 import './search.css';
 
 import FilterIngredient, { IHandleQuery } from './FilterIngredient';
+import Nutrient from './Nutrient';
 import { IComplexSearch } from '../../interfaces/spoonacular';
 import * as e from '../../enum/spoonacular';
 import * as spoonacular from '../../store/actions/spoonacular';
@@ -14,6 +15,7 @@ const index = (props: PropsFromRedux) => {
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
   const [nutrients, setNutrients] = useState<{}>({});
 
+  // TODO handle all external state
   const handleQuery = (prop: IHandleQuery) => {
     setSearchQuery((prev) => ({ ...prev, [prop.key]: prop.val }));
   };
@@ -54,7 +56,9 @@ const index = (props: PropsFromRedux) => {
         <FilterIngredient query={searchQuery} handleQuery={handleQuery} include={false} />
       </div>
 
-      <div className="NutrionalInfo"></div>
+      <div className="NutrionalInfo">
+        <Nutrient />
+      </div>
 
       <div>
         <Button onClick={onSubmit} fullWidth variant="contained" color="primary">
