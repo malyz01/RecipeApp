@@ -1,21 +1,4 @@
-.foodSearch {
-  width: 100%;
-  box-sizing: border-box;
-}
-
 .ingredientSearch {
   display: flex;
   justify-content: space-between;
-}
-
-.searchHeading {
-  margin-bottom: 0;
-}
-
-.searchInput {
-  text-align: center;
-}
-
-.searchMainContainer {
-  padding: 0 0.5em;
 }

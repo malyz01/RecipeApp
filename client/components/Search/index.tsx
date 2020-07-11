@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import Slider from '@material-ui/core/Slider';
+import { indexStyle } from './styles';
 import './search.css';
 
 import FilterIngredient, { IHandleQuery } from './FilterIngredient';
@@ -12,6 +12,7 @@ import * as spoonacular from '../../store/actions/spoonacular';
 import validate from './validate';
 
 const index = (props: PropsFromRedux) => {
+  const c = indexStyle();
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
   const [nutrients, setNutrients] = useState<{}>({});
 
@@ -35,12 +36,12 @@ const index = (props: PropsFromRedux) => {
   };
 
   return (
-    <div className="searchMainContainer">
+    <div className={c.mainContainer}>
       <div className="searchRecipe">
-        <h3 className="searchHeading">Search by Recipe Name</h3>
-        <div className="searchInput">
+        <h3 className={c.searchHeading}>Search by Recipe Name</h3>
+        <div className={c.searchInputContainer}>
           <input
-            className="foodSearch"
+            className={c.searchInput}
             name="query"
             onChange={onChange}
             value={searchQuery.query}
@@ -69,9 +70,7 @@ const index = (props: PropsFromRedux) => {
   );
 };
 
-const mapDispatch = {
-  ...spoonacular
-};
+const mapDispatch = { ...spoonacular };
 const connector = connect(null, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
