@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/core/Slider';
 import './search.css';
 
@@ -86,9 +87,9 @@ const index = (props: PropsFromRedux) => {
       </div>
 
       <div>
-        <button onClick={onSubmit} className="searchButton">
+        <Button onClick={onSubmit} fullWidth variant="contained" color="primary">
           Search
-        </button>
+        </Button>
       </div>
     </div>
   );

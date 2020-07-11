@@ -1,8 +1,8 @@
 export enum Params {
-  search = 'Search',
-  findByIngredients = 'Find by Ingredients',
-  findByNutrients = 'Find by Nutrients',
-  complexSearch = 'Complex search'
+  search = 'search',
+  findByIngredients = 'findByIngredients',
+  findByNutrients = 'findByNutrients',
+  complexSearch = 'complexSearch'
 }
 
 export enum EQSearch {

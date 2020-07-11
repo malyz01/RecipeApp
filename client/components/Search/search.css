@@ -1,15 +1,11 @@
 .foodSearch {
   width: 100%;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 .ingredientSearch {
   display: flex;
   justify-content: space-between;
-}
-
-.searchButton {
-  width: 100%
 }
 
 .searchHeading {

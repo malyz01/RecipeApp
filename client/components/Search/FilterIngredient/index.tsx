@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 
 import Ingredient from './Ingredient';
 import { IComplexSearch } from '../../../interfaces/spoonacular';
@@ -51,9 +52,13 @@ const index = ({ query, handleQuery, include }: IProps) => {
             placeholder={`e.g. ${include ? 'Potato' : 'Coriander'} `}
             value={ingredients[action]}
           ></input>
-          <button onClick={handleIngredients('add')}>Add</button>
+          <Button variant="contained" color="primary" onClick={handleIngredients('add')}>
+            Add
+          </Button>
         </div>
-        <div>clear all</div>
+        <Button variant="contained" color="primary">
+          clear all
+        </Button>
       </div>
       <Box display="flex">
         {q &&
