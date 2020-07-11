@@ -11,7 +11,7 @@ export const ingredientStyle = makeStyles((theme: Theme) =>
       fontWeight: 800,
       letterSpacing: 1.5,
       color: 'white',
-      backgroundColor: theme.palette.primary.light
+      backgroundColor: theme.palette.primary.main
     },
     span: {
       textTransform: 'capitalize',

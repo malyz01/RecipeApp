@@ -12,7 +12,10 @@ import validate from './validate';
 
 const index = (props: PropsFromRedux) => {
   const c = indexStyle();
-  const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
+  const [searchQuery, setSearchQuery] = useState<IComplexSearch>({
+    query: '',
+    addRecipeInformation: true
+  });
   const [nutrients, setNutrients] = useState<{}>({});
 
   // TODO handle all external state
