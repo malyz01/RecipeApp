@@ -8,6 +8,7 @@ import FilterByNutri from './FilterByNutri';
 import { IComplexSearch } from '../../interfaces/spoonacular';
 import * as e from '../../enum/spoonacular';
 import * as spoonacular from '../../store/actions/spoonacular';
+import * as queries from '../../store/actions/queries';
 import validate from './validate';
 
 const index = (props: PropsFromRedux) => {
@@ -25,6 +26,7 @@ const index = (props: PropsFromRedux) => {
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();
     setSearchQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    props.setQueries({ [e.target.name]: e.target.value });
   };
 
   const onSubmit = () => {
@@ -71,7 +73,7 @@ const index = (props: PropsFromRedux) => {
   );
 };
 
-const mapDispatch = { ...spoonacular };
+const mapDispatch = { ...spoonacular, ...queries };
 const connector = connect(null, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
