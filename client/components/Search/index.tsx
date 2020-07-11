@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import { indexStyle } from './styles';
 
 import FilterByIngredient, { IHandleQuery } from './FilterByIngredient';
-import Nutrient from './Nutrient';
+import FilterByNutri from './FilterByNutri';
 import { IComplexSearch } from '../../interfaces/spoonacular';
 import * as e from '../../enum/spoonacular';
 import * as spoonacular from '../../store/actions/spoonacular';
@@ -16,7 +16,6 @@ const index = (props: PropsFromRedux) => {
     query: '',
     addRecipeInformation: true
   });
-  const [nutrients, setNutrients] = useState<{}>({});
 
   // TODO handle all external state
   const handleQuery = (prop: IHandleQuery) => {
@@ -30,7 +29,7 @@ const index = (props: PropsFromRedux) => {
 
   const onSubmit = () => {
     try {
-      const params = validate(searchQuery, nutrients);
+      const params = validate(searchQuery);
       props.fetchRecipesBy(e.Params.complexSearch, { params });
     } catch (err) {
       alert(err.message);
@@ -60,7 +59,7 @@ const index = (props: PropsFromRedux) => {
       </div>
 
       <div className="NutrionalInfo">
-        <Nutrient />
+        <FilterByNutri />
       </div>
 
       <div>

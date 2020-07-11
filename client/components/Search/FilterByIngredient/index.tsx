@@ -54,11 +54,21 @@ const index = ({ query, handleQuery, include }: IProps) => {
             placeholder={`e.g. ${placeholder}`}
             value={ingredients[action]}
           ></input>
-          <Button variant="contained" color="primary" onClick={handleIngredients('add')}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            onClick={handleIngredients('add')}
+          >
             Add
           </Button>
         </div>
-        <Button variant="contained" color="primary" onClick={() => alert('Add functionality')}>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="small"
+          onClick={() => alert('Add functionality')}
+        >
           clear all
         </Button>
       </Box>

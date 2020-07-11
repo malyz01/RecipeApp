@@ -1,7 +1,7 @@
 import { IComplexSearch } from '../../interfaces/spoonacular';
 
-export default (q: IComplexSearch, nutri: object) => {
-  let data = { ...q, ...getMinMax(nutri) };
+export default (q: IComplexSearch) => {
+  let data = { ...q };
 
   if (data.query === '') {
     throw new Error('Please enter Recipe name');
@@ -18,7 +18,7 @@ export default (q: IComplexSearch, nutri: object) => {
   return data;
 };
 
-function getMinMax(nutri: object) {
+export function getMinMax(nutri: object) {
   let ntrn = {};
   const entries = Object.entries(nutri);
   for (const [key, value] of entries) {

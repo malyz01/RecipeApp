@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Slider from '@material-ui/core/Slider';
 
 import * as e from '../../enum/spoonacular';
+import { getMinMax } from './validate';
 
 const Nutrient = () => {
   const [nutrients, setNutrients] = useState<{}>({});
@@ -13,6 +14,10 @@ const Nutrient = () => {
     }));
   };
 
+  const handleQuery = () => {
+    const queries = getMinMax(nutrients);
+  };
+
   return (
     <div>
       <h3>Nutrional Information</h3>
@@ -22,7 +27,7 @@ const Nutrient = () => {
         ))}
       </select>
       <Slider
-        color="primary"
+        color="secondary"
         defaultValue={[0, 10]}
         max={200}
         onChange={handleSlider('Protein')}
@@ -30,7 +35,7 @@ const Nutrient = () => {
         aria-labelledby="Protein range"
       />
       <Slider
-        color="primary"
+        color="secondary"
         defaultValue={[0, 10]}
         max={500}
         onChange={handleSlider('Carbs')}
