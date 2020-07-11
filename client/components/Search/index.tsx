@@ -14,13 +14,6 @@ const index = (props: PropsFromRedux) => {
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
   const [nutrients, setNutrients] = useState<{}>({});
 
-  const handleSlider = (nutri: string) => (event: any, newValue: number | number[]) => {
-    setNutrients((prev) => ({
-      ...prev,
-      [nutri]: newValue as number[]
-    }));
-  };
-
   const handleQuery = (prop: IHandleQuery) => {
     setSearchQuery((prev) => ({ ...prev, [prop.key]: prop.val }));
   };
@@ -61,30 +54,7 @@ const index = (props: PropsFromRedux) => {
         <FilterIngredient query={searchQuery} handleQuery={handleQuery} include={false} />
       </div>
 
-      <div className="NutrionalInfo">
-        <h3>Nutrional Information</h3>
-        <select>
-          {Object.values(e.ENutrients).map((n) => (
-            <option key={n}>{n}</option>
-          ))}
-        </select>
-        <Slider
-          color="primary"
-          defaultValue={[0, 10]}
-          max={200}
-          onChange={handleSlider('Protein')}
-          valueLabelDisplay="auto"
-          aria-labelledby="Protein range"
-        />
-        <Slider
-          color="primary"
-          defaultValue={[0, 10]}
-          max={500}
-          onChange={handleSlider('Carbs')}
-          valueLabelDisplay="auto"
-          aria-labelledby="Carbs range"
-        />
-      </div>
+      <div className="NutrionalInfo"></div>
 
       <div>
         <Button onClick={onSubmit} fullWidth variant="contained" color="primary">
