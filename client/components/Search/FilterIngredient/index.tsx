@@ -5,20 +5,20 @@ import Ingredient from './Ingredient';
 import { IComplexSearch } from '../../../interfaces/spoonacular';
 import { capsCamelFirstWord } from '../../helpers';
 
-export interface IHandleSearch {
+export interface IHandleQuery {
   key: string;
   val: string[];
 }
 
 type IProps = {
-  search: IComplexSearch;
-  handleSearch: (props: IHandleSearch) => void;
+  query: IComplexSearch;
+  handleQuery: (props: IHandleQuery) => void;
   include: boolean;
 };
 
-const index = ({ search, handleSearch, include }: IProps) => {
+const index = ({ query, handleQuery, include }: IProps) => {
   const action = include ? 'includeIngredients' : 'excludeIngredients';
-  const query: string[] = (search[action] as string[]) || [];
+  const q: string[] = (query[action] as string[]) || [];
   const name = capsCamelFirstWord(action);
   const [ingredients, setIngredients] = useState({
     includeIngredients: '',
@@ -26,11 +26,11 @@ const index = ({ search, handleSearch, include }: IProps) => {
   });
 
   const handleIngredients = (option: string, filter?: string) => () => {
-    let newVal: string[] = (search[action] as string[]) || [];
+    let newVal: string[] = q;
     if (option === 'add' && ingredients[action] !== '') newVal.push(ingredients[action]);
     if (option === 'del' && newVal.length) newVal = newVal.filter((i) => i !== filter);
 
-    handleSearch({ key: action, val: newVal });
+    handleQuery({ key: action, val: newVal });
     setIngredients((prev) => ({ ...prev, [action]: '' }));
   };
 
@@ -56,9 +56,9 @@ const index = ({ search, handleSearch, include }: IProps) => {
         <div>clear all</div>
       </div>
       <Box display="flex">
-        {query &&
-          Array.isArray(query) &&
-          query.map((ingredient, index) => (
+        {q &&
+          Array.isArray(q) &&
+          q.map((ingredient, index) => (
             <Ingredient
               key={index}
               name={ingredient}

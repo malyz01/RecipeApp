@@ -12,4 +12,5 @@ export function capsCamelFirstWord(word: string) {
 
 export function setCamelToArray(word: string) {
   let newWord = word;
+  // TODO setCamelToArray
 }

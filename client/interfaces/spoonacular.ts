@@ -123,5 +123,5 @@ export interface IComplexSearch {
 }
 
 export interface IQueries {
-  params: {};
+  params: IComplexSearch;
 }

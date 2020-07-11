@@ -1,13 +1,15 @@
 import React, { useState, ChangeEvent } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import Slider from '@material-ui/core/Slider';
 import './search.css';
 
-import FilterIngredient, { IHandleSearch } from './FilterIngredient';
+import FilterIngredient, { IHandleQuery } from './FilterIngredient';
 import { IComplexSearch } from '../../interfaces/spoonacular';
-import { ENutrients } from '../../enum/spoonacular';
+import * as e from '../../enum/spoonacular';
 import validate from './validate';
+import * as spoonacular from '../../store/actions/spoonacular';
 
-const index = () => {
+const index = (props: PropsFromRedux) => {
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
   const [nutrients, setNutrients] = useState<{}>({});
 
@@ -18,7 +20,7 @@ const index = () => {
     }));
   };
 
-  const handleFilterIngrt = (prop: IHandleSearch) => {
+  const handleQuery = (prop: IHandleQuery) => {
     setSearchQuery((prev) => ({ ...prev, [prop.key]: prop.val }));
   };
 
@@ -29,7 +31,8 @@ const index = () => {
 
   const onSubmit = () => {
     try {
-      console.log(validate(searchQuery, nutrients));
+      const queries = validate(searchQuery, nutrients);
+      props.fetchRecipesBy(e.Params.complexSearch, { params: queries });
     } catch (err) {
       alert(err.message);
     }
@@ -53,14 +56,14 @@ const index = () => {
 
       <div className="searchIngredients">
         <h3>Search by Ingredients</h3>
-        <FilterIngredient search={searchQuery} handleSearch={handleFilterIngrt} include={true} />
-        <FilterIngredient search={searchQuery} handleSearch={handleFilterIngrt} include={false} />
+        <FilterIngredient query={searchQuery} handleQuery={handleQuery} include={true} />
+        <FilterIngredient query={searchQuery} handleQuery={handleQuery} include={false} />
       </div>
 
       <div className="NutrionalInfo">
         <h3>Nutrional Information</h3>
         <select>
-          {Object.values(ENutrients).map((n) => (
+          {Object.values(e.ENutrients).map((n) => (
             <option key={n}>{n}</option>
           ))}
         </select>
@@ -91,4 +94,15 @@ const index = () => {
   );
 };
 
-export default index;
+const mapDispatch = {
+  ...spoonacular
+};
+const connector = connect(null, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+// If props are passdown
+// type Props = PropsFromRedux & {
+//   backgroundColor: string
+// }
+
+export default connector(index);
