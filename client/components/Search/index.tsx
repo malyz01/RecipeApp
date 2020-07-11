@@ -7,8 +7,8 @@ import './search.css';
 import FilterIngredient, { IHandleQuery } from './FilterIngredient';
 import { IComplexSearch } from '../../interfaces/spoonacular';
 import * as e from '../../enum/spoonacular';
-import validate from './validate';
 import * as spoonacular from '../../store/actions/spoonacular';
+import validate from './validate';
 
 const index = (props: PropsFromRedux) => {
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({ query: '' });
@@ -32,8 +32,8 @@ const index = (props: PropsFromRedux) => {
 
   const onSubmit = () => {
     try {
-      const queries = validate(searchQuery, nutrients);
-      props.fetchRecipesBy(e.Params.complexSearch, { params: queries });
+      const params = validate(searchQuery, nutrients);
+      props.fetchRecipesBy(e.Params.complexSearch, { params });
     } catch (err) {
       alert(err.message);
     }
