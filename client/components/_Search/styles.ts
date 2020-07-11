@@ -3,7 +3,12 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 export const indexStyle = makeStyles((theme: Theme) =>
   createStyles({
     mainContainer: {
-      padding: '0 .5em'
+      margin: '0 auto',
+      padding: '0 .5em',
+      maxWidth: 500,
+      minWidth: 300,
+      width: '100%',
+      boxSizing: 'border-box'
     },
     searchHeading: {
       marginBottom: 0

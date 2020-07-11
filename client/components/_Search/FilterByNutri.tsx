@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from '@material-ui/core/Slider';
 
 import * as e from '../../enum/spoonacular';
@@ -26,22 +26,24 @@ const Nutrient = () => {
           <option key={n}>{n}</option>
         ))}
       </select>
-      <Slider
-        color="secondary"
-        defaultValue={[0, 10]}
-        max={200}
-        onChange={handleSlider('Protein')}
-        valueLabelDisplay="auto"
-        aria-labelledby="Protein range"
-      />
-      <Slider
-        color="secondary"
-        defaultValue={[0, 10]}
-        max={500}
-        onChange={handleSlider('Carbs')}
-        valueLabelDisplay="auto"
-        aria-labelledby="Carbs range"
-      />
+      <div style={{ padding: '0 1rem' }}>
+        <Slider
+          color="secondary"
+          defaultValue={[0, 10]}
+          max={200}
+          onChange={handleSlider('Protein')}
+          valueLabelDisplay="auto"
+          aria-labelledby="Protein range"
+        />
+        <Slider
+          color="secondary"
+          defaultValue={[0, 10]}
+          max={500}
+          onChange={handleSlider('Carbs')}
+          valueLabelDisplay="auto"
+          aria-labelledby="Carbs range"
+        />
+      </div>
     </div>
   );
 };
