@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import Slider from '@material-ui/core/Slider';
 
 import * as e from '../../enum/spoonacular';
+import * as queries from '../../store/actions/queries';
 import { getMinMax } from './validate';
 
-const Nutrient = () => {
+const Nutrient = (props: PropsFromRedux) => {
   const [nutrients, setNutrients] = useState<{}>({});
+
+  useEffect(() => {
+    const queries = getMinMax(nutrients);
+    props.setQueries(queries);
+  }, [nutrients]);
 
   const handleSlider = (nutri: string) => (event: any, newValue: number | number[]) => {
     setNutrients((prev) => ({
       ...prev,
       [nutri]: newValue as number[]
     }));
-  };
-
-  const handleQuery = () => {
-    const queries = getMinMax(nutrients);
   };
 
   return (
@@ -48,4 +51,8 @@ const Nutrient = () => {
   );
 };
 
-export default Nutrient;
+const mapDispatch = { ...queries };
+const connector = connect(null, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(Nutrient);

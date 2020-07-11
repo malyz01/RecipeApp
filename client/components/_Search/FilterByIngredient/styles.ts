@@ -6,7 +6,7 @@ export const ingredientStyle = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
       margin: '.5rem .5rem 1rem 0',
-      padding: '.5rem .8rem',
+      padding: '.2rem .3rem .2rem .5rem',
       fontSize: 14,
       fontWeight: 800,
       letterSpacing: 1.5,

@@ -72,7 +72,7 @@ const index = ({ query, handleQuery, include }: IProps) => {
           clear all
         </Button>
       </Box>
-      <Box display="flex">
+      <Box display="flex" flexWrap="wrap">
         {q &&
           Array.isArray(q) &&
           q.map((ingredient, index) => (
