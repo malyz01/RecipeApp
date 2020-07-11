@@ -4,3 +4,8 @@ export const isArrayNotEmpty = (arr) => {
   }
   return false;
 };
+
+export const capsFirstWordCC = (word) => {
+  let newWord = word;
+  return newWord.replace(/^([a-z])([a-z]+)([A-Z][a-z]+)/g, (_, f, s) => f.toUpperCase() + s);
+};

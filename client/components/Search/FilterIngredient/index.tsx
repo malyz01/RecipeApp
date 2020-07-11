@@ -1,8 +1,9 @@
 import React, { useState, ChangeEvent } from 'react';
 import Box from '@material-ui/core/Box';
 
-import { IComplexSearch } from '../../../interfaces/spoonacular';
 import Ingredient from './Ingredient';
+import { IComplexSearch } from '../../../interfaces/spoonacular';
+import { capsFirstWordCC } from '../../helpers';
 
 export interface IHandleSearch {
   key: string;
@@ -18,7 +19,7 @@ type IProps = {
 const index = ({ search, handleSearch, include }: IProps) => {
   const action = include ? 'includeIngredients' : 'excludeIngredients';
   const query: string[] = (search[action] as string[]) || [];
-  const name = action.replace(/([a-z])([A-Z][a-z]+)/g, '$1');
+  const name = capsFirstWordCC(action);
   const [ingredients, setIngredients] = useState({
     includeIngredients: '',
     excludeIngredients: ''
