@@ -1,6 +1,6 @@
 import { Types } from '../types';
 import { spoonacular } from '../../api';
-import * as i from '../../interfaces/spoonacular';
+import * as i from '../../interfaces';
 import setReducer from './index';
 
 export const fetchRecipesBy = (params: string, queries: i.IQueries) => async (dispatch) => {

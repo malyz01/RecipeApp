@@ -1,13 +1,15 @@
-export interface ISearch {
-  query: string;
-  cuisine?: string;
-  diet?: string;
-  excludeIngredients?: string;
-  intolerances?: string;
-  offset?: number;
-  number?: number;
-  limitLicense?: boolean;
-  instructionsRequired?: boolean;
+export interface IData {
+  pending: boolean;
+  data: object;
+}
+
+export interface IAction {
+  type: string;
+  payload: object | Array<object> | string;
+}
+
+export interface IQueries {
+  params: IComplexSearch;
 }
 
 export interface IComplexSearch {
@@ -107,8 +109,4 @@ export interface IComplexSearch {
   offset?: number;
   number?: number;
   limitLicense?: boolean;
-}
-
-export interface IQueries {
-  params: IComplexSearch;
 }
