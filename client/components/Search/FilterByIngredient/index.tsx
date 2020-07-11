@@ -20,6 +20,7 @@ type IProps = {
 
 const index = ({ query, handleQuery, include }: IProps) => {
   const action = include ? 'includeIngredients' : 'excludeIngredients';
+  const placeholder = include ? 'Potato' : 'Coriander';
   const q: string[] = (query[action] as string[]) || [];
   const name = capsCamelFirstWord(action);
   const [ingredients, setIngredients] = useState({
@@ -50,14 +51,14 @@ const index = ({ query, handleQuery, include }: IProps) => {
             name={action}
             onChange={onChange}
             type="text"
-            placeholder={`e.g. ${include ? 'Potato' : 'Coriander'} `}
+            placeholder={`e.g. ${placeholder}`}
             value={ingredients[action]}
           ></input>
           <Button variant="contained" color="primary" onClick={handleIngredients('add')}>
             Add
           </Button>
         </div>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={() => alert('Add functionality')}>
           clear all
         </Button>
       </Box>

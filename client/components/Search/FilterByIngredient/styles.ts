@@ -5,7 +5,7 @@ export const ingredientStyle = makeStyles((theme: Theme) =>
     paper: {
       display: 'flex',
       alignItems: 'center',
-      margin: '.5rem .5rem 0 0',
+      margin: '.5rem .5rem 1rem 0',
       padding: '.5rem .8rem',
       fontSize: 14,
       fontWeight: 800,
