@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Box';
 
 import Ingredient from './Ingredient';
 import { IComplexSearch } from '../../../interfaces/spoonacular';
-import { capsFirstWordCC } from '../../helpers';
+import { capsCamelFirstWord } from '../../helpers';
 
 export interface IHandleSearch {
   key: string;
@@ -19,7 +19,7 @@ type IProps = {
 const index = ({ search, handleSearch, include }: IProps) => {
   const action = include ? 'includeIngredients' : 'excludeIngredients';
   const query: string[] = (search[action] as string[]) || [];
-  const name = capsFirstWordCC(action);
+  const name = capsCamelFirstWord(action);
   const [ingredients, setIngredients] = useState({
     includeIngredients: '',
     excludeIngredients: ''
