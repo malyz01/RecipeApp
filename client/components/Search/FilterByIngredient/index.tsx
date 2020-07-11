@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import Box from '@material-ui/core/Box';
+import Typo from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import Ingredient from './Ingredient';
@@ -42,8 +43,8 @@ const index = ({ query, handleQuery, include }: IProps) => {
 
   return (
     <div className="ingredientFilter">
-      <h4 className="searchHeading">{name} Ingredients:</h4>
-      <div className="ingredientSearch">
+      <Typo variant="subtitle2">{name} Ingredients:</Typo>
+      <Box display="flex" justifyContent="space-between">
         <div>
           <input
             name={action}
@@ -59,7 +60,7 @@ const index = ({ query, handleQuery, include }: IProps) => {
         <Button variant="contained" color="primary">
           clear all
         </Button>
-      </div>
+      </Box>
       <Box display="flex">
         {q &&
           Array.isArray(q) &&

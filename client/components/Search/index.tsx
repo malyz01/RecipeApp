@@ -2,9 +2,8 @@ import React, { useState, ChangeEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import { indexStyle } from './styles';
-import './search.css';
 
-import FilterIngredient, { IHandleQuery } from './FilterIngredient';
+import FilterByIngredient, { IHandleQuery } from './FilterByIngredient';
 import Nutrient from './Nutrient';
 import { IComplexSearch } from '../../interfaces/spoonacular';
 import * as e from '../../enum/spoonacular';
@@ -53,8 +52,8 @@ const index = (props: PropsFromRedux) => {
 
       <div className="searchIngredients">
         <h3>Search by Ingredients</h3>
-        <FilterIngredient query={searchQuery} handleQuery={handleQuery} include={true} />
-        <FilterIngredient query={searchQuery} handleQuery={handleQuery} include={false} />
+        <FilterByIngredient query={searchQuery} handleQuery={handleQuery} include={true} />
+        <FilterByIngredient query={searchQuery} handleQuery={handleQuery} include={false} />
       </div>
 
       <div className="NutrionalInfo">
