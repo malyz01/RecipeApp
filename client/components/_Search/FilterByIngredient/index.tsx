@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import { sIndex } from './styles';
 
 import Ingredient from './Ingredient';
-import { IComplexSearch } from '../../../interfaces/spoonacular';
+import { IComplexSearch } from '../../../interfaces';
 import { capsCamelFirstWord } from '../../helpers';
 
 export interface IHandleQuery {

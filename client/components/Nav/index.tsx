@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { IProps } from './interface';
-
-const index = ({ sample }: IProps) => {
+const index = () => {
   return (
     <div
       style={{
@@ -13,13 +11,7 @@ const index = ({ sample }: IProps) => {
         justifyContent: 'center',
         alignItems: 'center'
       }}
-    >
-      {sample.map((x, i) => (
-        <div key={i}>
-          {x.id}: {x.name}
-        </div>
-      ))}
-    </div>
+    ></div>
   );
 };
 

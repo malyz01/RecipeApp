@@ -5,7 +5,7 @@ import { sIndex } from './styles';
 
 import FilterByIngredient, { IHandleQuery } from './FilterByIngredient';
 import FilterByNutri from './FilterByNutri';
-import { IComplexSearch } from '../../interfaces/spoonacular';
+import { IComplexSearch } from '../../interfaces';
 import * as e from '../../enum/spoonacular';
 import * as spoonacular from '../../store/actions/spoonacular';
 import * as queries from '../../store/actions/queries';

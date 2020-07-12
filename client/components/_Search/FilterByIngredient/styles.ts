@@ -19,8 +19,8 @@ export const sIngredient = makeStyles((theme: Theme) =>
       padding: '.2rem .3rem .2rem .5rem',
       fontWeight: 800,
       letterSpacing: 1.5,
-      color: 'white',
-      backgroundColor: theme.palette.primary.main
+      color: 'white !important',
+      backgroundColor: `${theme.palette.primary.main} !important`
     },
     span: {
       textTransform: 'capitalize',

@@ -12,7 +12,7 @@ type IngredientProp = {
 const Ingredient = (props: IngredientProp) => {
   const c = sIngredient();
   return (
-    <Paper className={c.paper} square={false} elevation={4}>
+    <Paper classes={{ root: c.paper }} variant="outlined" square={false}>
       <span className={c.span}>{props.name}</span>
       <HighlightOffIcon fontSize="small" onClick={() => props.onClick()} className={c.icon} />
     </Paper>
