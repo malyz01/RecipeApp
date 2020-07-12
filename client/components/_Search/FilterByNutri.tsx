@@ -19,7 +19,7 @@ const defaultVal = {
 const Nutrient = (props: PropsFromRedux) => {
   const c = sFilterByNutri();
   const [nutrients, setNutrients] = useState<{}>({});
-  console.log(Object.entries(e.ENutrients));
+
   useEffect(() => {
     props.setNutriQuery(nutrients);
   }, [nutrients]);
