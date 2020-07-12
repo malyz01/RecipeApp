@@ -25,3 +25,12 @@ export const sIndex = makeStyles((theme: Theme) =>
     }
   })
 );
+
+export const sFilterByNutri = makeStyles((theme: Theme) =>
+  createStyles({
+    sliderContainer: {
+      padding: '0 1em',
+      display: 'flex'
+    }
+  })
+);
