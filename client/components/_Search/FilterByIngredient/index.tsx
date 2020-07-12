@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent } from 'react';
 import Box from '@material-ui/core/Box';
 import Typo from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { sIndex } from './styles';
 
 import Ingredient from './Ingredient';
 import { IComplexSearch } from '../../../interfaces/spoonacular';
@@ -19,6 +20,7 @@ type IProps = {
 };
 
 const index = ({ query, handleQuery, include }: IProps) => {
+  const c = sIndex();
   const action = include ? 'includeIngredients' : 'excludeIngredients';
   const placeholder = include ? 'Potato' : 'Coriander';
   const q: string[] = (query[action] as string[]) || [];
@@ -43,7 +45,7 @@ const index = ({ query, handleQuery, include }: IProps) => {
   };
 
   return (
-    <div className="ingredientFilter">
+    <div className={c.mainContainer}>
       <Typo variant="subtitle2">{name} Ingredients:</Typo>
       <Box display="flex" justifyContent="space-between">
         <div>

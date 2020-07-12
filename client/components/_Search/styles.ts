@@ -1,6 +1,6 @@
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 
-export const indexStyle = makeStyles((theme: Theme) =>
+export const sIndex = makeStyles((theme: Theme) =>
   createStyles({
     mainContainer: {
       margin: '0 auto',

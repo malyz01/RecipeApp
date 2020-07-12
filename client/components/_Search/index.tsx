@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import { indexStyle } from './styles';
+import { sIndex } from './styles';
 
 import FilterByIngredient, { IHandleQuery } from './FilterByIngredient';
 import FilterByNutri from './FilterByNutri';
@@ -12,7 +12,7 @@ import * as queries from '../../store/actions/queries';
 import validate from './validate';
 
 const index = (props: PropsFromRedux) => {
-  const c = indexStyle();
+  const c = sIndex();
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({
     query: '',
     addRecipeInformation: true
