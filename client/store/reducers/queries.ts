@@ -1,16 +1,20 @@
 import { Types } from '../types';
 import * as i from '../../interfaces';
 
-const INITIAL: i.IComplexSearch = {
-  query: ''
+const INITIAL = {
+  ingredients: {
+    included: [],
+    excluded: []
+  },
+  nutrients: {}
 };
 
-export default (state: i.IComplexSearch = INITIAL, action: i.IAction) => {
+export default (state = INITIAL, action: i.IAction) => {
   switch (action.type) {
-    case Types.SET_QUERIES:
-      return { ...state, ...(action.payload as object) };
-    case Types.CLEAR_QUERIES:
-      return INITIAL;
+    case Types.SET_QUERY_INGREDIENTS:
+      return { ...state, ingredients: action.payload };
+    case Types.SET_QUERY_NUTRIENTS:
+      return { ...state, nutrients: action.payload };
     default:
       return state;
   }
