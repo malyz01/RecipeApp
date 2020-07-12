@@ -12,5 +12,10 @@ export function capsCamelFirstWord(word: string) {
 
 export function setCamelToArray(word: string) {
   let newWord = word;
-  // TODO setCamelToArray
+  return newWord.match(/[a-zA-Z][a-z]+/g).map(capitalizeWord);
+}
+
+export function capitalizeWord(word: string) {
+  let newWord = word;
+  return newWord.charAt(0).toUpperCase() + newWord.substring(1);
 }

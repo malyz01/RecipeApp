@@ -45,7 +45,7 @@ const index = ({ query, handleQuery, include }: IProps) => {
   };
 
   return (
-    <div className={c.mainContainer}>
+    <div>
       <Typo variant="subtitle2">{name} Ingredients:</Typo>
       <Box display="flex" justifyContent="space-between">
         <div>
@@ -57,18 +57,18 @@ const index = ({ query, handleQuery, include }: IProps) => {
             value={ingredients[action]}
           ></input>
           <Button
+            className={c.button}
             variant="contained"
             color="primary"
-            size="small"
             onClick={handleIngredients('add')}
           >
             Add
           </Button>
         </div>
         <Button
+          className={c.button}
           variant="contained"
           color="secondary"
-          size="small"
           onClick={() => alert('Add functionality')}
         >
           clear all

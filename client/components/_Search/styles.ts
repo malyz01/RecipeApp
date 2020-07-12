@@ -19,6 +19,9 @@ export const sIndex = makeStyles((theme: Theme) =>
     searchInput: {
       width: '100%',
       boxSizing: 'border-box'
+    },
+    [theme.breakpoints.down(500)]: {
+      fontSize: '12'
     }
   })
 );
