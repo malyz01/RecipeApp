@@ -6,6 +6,12 @@ export const sIndex = makeStyles((theme: Theme) =>
       border: 'none',
       boxShadow: 'none'
     },
+    accordionSummary: {
+      padding: '0'
+    },
+    accordionDetails: {
+      padding: '0'
+    },
     accordionDetailsContainer: {
       width: '100%'
     },
@@ -22,8 +28,8 @@ export const sIngredient = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
       fontSize: '.8em',
-      margin: '.5rem .5rem 1rem 0',
-      padding: '.2rem .3rem .2rem .5rem',
+      margin: '.5rem .5rem .5rem 0',
+      padding: '.2rem .3rem',
       fontWeight: 800,
       letterSpacing: 1.5,
       color: 'white !important',

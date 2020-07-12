@@ -50,10 +50,10 @@ const index = ({ query, handleQuery, include }: IProps) => {
 
   return (
     <Accordion classes={{ root: c.accordion }}>
-      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+      <AccordionSummary className={c.accordionSummary} expandIcon={<ExpandMoreIcon />}>
         <Typo variant="subtitle2">{name} Ingredients:</Typo>
       </AccordionSummary>
-      <AccordionDetails>
+      <AccordionDetails className={c.accordionDetails}>
         <Box className={c.accordionDetailsContainer}>
           <Box display="flex" justifyContent="space-between">
             <div>
