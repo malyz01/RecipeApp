@@ -1,17 +1,17 @@
 import { Types } from '../types';
 import setReducer from './index';
 
-export const setQueries = (queries: object) => (dispatch) => {
+export const setIngredientQuery = (queries: object) => (dispatch) => {
   try {
-    dispatch(setReducer(Types.SET_QUERIES, queries));
+    dispatch(setReducer(Types.SET_QUERY_INGREDIENTS, queries));
   } catch (err) {
     console.log(err);
   }
 };
 
-export const clearQueries = () => (dispatch) => {
+export const setNutriQuery = (queries: object) => (dispatch) => {
   try {
-    dispatch(setReducer(Types.CLEAR_QUERIES));
+    dispatch(setReducer(Types.SET_QUERY_NUTRIENTS, queries));
   } catch (err) {
     console.log(err);
   }
