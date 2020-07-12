@@ -41,9 +41,9 @@ export enum EQComplex {
 }
 
 export enum ENutrients {
+  calories = 'Calories',
   carbs = 'Carbs',
   protein = 'Protein',
-  calories = 'Calories',
   fat = 'Fat',
   fiber = 'Fiber'
 }

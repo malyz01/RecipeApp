@@ -1,7 +1,11 @@
 import React, { useState, ChangeEvent } from 'react';
 import Box from '@material-ui/core/Box';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typo from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { sIndex } from './styles';
 
 import Ingredient from './Ingredient';
@@ -45,47 +49,53 @@ const index = ({ query, handleQuery, include }: IProps) => {
   };
 
   return (
-    <div>
-      <Typo variant="subtitle2">{name} Ingredients:</Typo>
-      <Box display="flex" justifyContent="space-between">
-        <div>
-          <input
-            name={action}
-            onChange={onChange}
-            type="text"
-            placeholder={`e.g. ${placeholder}`}
-            value={ingredients[action]}
-          ></input>
-          <Button
-            className={c.button}
-            variant="contained"
-            color="primary"
-            onClick={handleIngredients('add')}
-          >
-            Add
-          </Button>
-        </div>
-        <Button
-          className={c.button}
-          variant="contained"
-          color="secondary"
-          onClick={() => alert('Add functionality')}
-        >
-          clear all
-        </Button>
-      </Box>
-      <Box display="flex" flexWrap="wrap">
-        {q &&
-          Array.isArray(q) &&
-          q.map((ingredient, index) => (
-            <Ingredient
-              key={index}
-              name={ingredient}
-              onClick={handleIngredients('del', ingredient)}
-            />
-          ))}
-      </Box>
-    </div>
+    <Accordion classes={{ root: c.accordion }}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Typo variant="subtitle2">{name} Ingredients:</Typo>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Box className={c.accordionDetailsContainer}>
+          <Box display="flex" justifyContent="space-between">
+            <div>
+              <input
+                name={action}
+                onChange={onChange}
+                type="text"
+                placeholder={`e.g. ${placeholder}`}
+                value={ingredients[action]}
+              ></input>
+              <Button
+                className={c.button}
+                variant="contained"
+                color="primary"
+                onClick={handleIngredients('add')}
+              >
+                Add
+              </Button>
+            </div>
+            <Button
+              className={c.button}
+              variant="contained"
+              color="secondary"
+              onClick={() => alert('Add functionality')}
+            >
+              clear all
+            </Button>
+          </Box>
+          <Box display="flex" flexWrap="wrap">
+            {q &&
+              Array.isArray(q) &&
+              q.map((ingredient, index) => (
+                <Ingredient
+                  key={index}
+                  name={ingredient}
+                  onClick={handleIngredients('del', ingredient)}
+                />
+              ))}
+          </Box>
+        </Box>
+      </AccordionDetails>
+    </Accordion>
   );
 };
 

@@ -8,7 +8,7 @@ import { getMinMax } from './validate';
 
 const Nutrient = (props: PropsFromRedux) => {
   const [nutrients, setNutrients] = useState<{}>({});
-
+  console.log(Object.entries(e.ENutrients));
   useEffect(() => {
     const queries = getMinMax(nutrients);
     props.setQueries(queries);

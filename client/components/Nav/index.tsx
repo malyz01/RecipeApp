@@ -13,8 +13,8 @@ const index = () => {
   return (
     <div className={c.mainContainer}>
       <Typo variant="h6">Recipe app</Typo>
-      <IconButton className={c.iconButton}>
-        <MoreVertIcon onClick={handleClick} />
+      <IconButton onClick={handleClick} className={c.iconButton}>
+        <MoreVertIcon />
       </IconButton>
     </div>
   );

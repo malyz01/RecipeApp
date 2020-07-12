@@ -2,6 +2,13 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 
 export const sIndex = makeStyles((theme: Theme) =>
   createStyles({
+    accordion: {
+      border: 'none',
+      boxShadow: 'none'
+    },
+    accordionDetailsContainer: {
+      width: '100%'
+    },
     button: {
       fontSize: '.7em',
       padding: '.2em .8em'
