@@ -17,7 +17,7 @@ const index = (props: PropsFromRedux) => {
     addRecipeInformation: true
   });
 
-  // TODO handle all external state
+  // TODO remove this. use redux instead
   const handleQuery = (prop: IHandleQuery) => {
     setSearchQuery((prev) => ({ ...prev, [prop.key]: prop.val }));
   };

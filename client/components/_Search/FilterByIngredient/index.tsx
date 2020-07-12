@@ -23,6 +23,7 @@ type IProps = {
   include: boolean;
 };
 
+// TODO refactor to use redux
 const index = ({ query, handleQuery, include }: IProps) => {
   const c = sIndex();
   const action = include ? 'includeIngredients' : 'excludeIngredients';
