@@ -1,18 +1,26 @@
 import { IComplexSearch } from '../../interfaces';
 
 export default (q: IComplexSearch) => {
-  let data = { ...q };
+  const { nutrients, ...rest } = q;
+  const nutrientList = Object.keys(nutrients);
+  let data = { ...rest };
 
   if (data.query === '') {
     throw new Error('Please enter Recipe name');
   }
 
-  if (Array.isArray(data.includeIngredients)) {
+  if (data.includeIngredients.length && Array.isArray(data.includeIngredients)) {
     data.includeIngredients = data.includeIngredients.join(',');
   }
 
-  if (Array.isArray(data.excludeIngredients)) {
+  if (data.excludeIngredients.length && Array.isArray(data.excludeIngredients)) {
     data.excludeIngredients = data.excludeIngredients.join(',');
+  }
+
+  if (nutrientList.length) {
+    for (const n of nutrientList) {
+      data = { ...data, ...getMinMax(nutrients[n]) };
+    }
   }
 
   return data;

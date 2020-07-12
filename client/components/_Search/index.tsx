@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import { sIndex } from './styles';
 
-import FilterByIngredient, { IHandleQuery } from './FilterByIngredient';
+import FilterByIngredient from './FilterByIngredient';
 import FilterByNutri from './FilterByNutri';
 import { IComplexSearch } from '../../interfaces';
 import * as e from '../../enum/spoonacular';
@@ -17,11 +17,6 @@ const index = (props: PropsFromRedux) => {
     addRecipeInformation: true
   });
 
-  // TODO remove this. use redux instead
-  const handleQuery = (prop: IHandleQuery) => {
-    setSearchQuery((prev) => ({ ...prev, [prop.key]: prop.val }));
-  };
-
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();
     setSearchQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -29,7 +24,7 @@ const index = (props: PropsFromRedux) => {
 
   const onSubmit = () => {
     try {
-      const params = validate(searchQuery);
+      const params = validate({ ...searchQuery, ...props.queries });
       props.fetchRecipesBy(e.Params.complexSearch, { params });
     } catch (err) {
       alert(err.message);
@@ -71,8 +66,11 @@ const index = (props: PropsFromRedux) => {
   );
 };
 
+const mapState = (state) => ({
+  queries: state.queries
+});
 const mapDispatch = { ...spoonacular };
-const connector = connect(null, mapDispatch);
+const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 // If props are passdown

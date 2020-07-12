@@ -12,8 +12,17 @@ export interface IQueries {
   params: IComplexSearch;
 }
 
+export interface INutrients {
+  Calories: number[];
+  Carbs: number[];
+  Protein: number[];
+  Fat: number[];
+  Fiber: number[];
+}
+
 export interface IComplexSearch {
   query: string;
+  nutrients?: INutrients;
   cuisine?: string;
   excludeCuisine?: string;
   diet?: string;
