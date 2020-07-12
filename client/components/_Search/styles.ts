@@ -28,9 +28,14 @@ export const sIndex = makeStyles((theme: Theme) =>
 
 export const sFilterByNutri = makeStyles((theme: Theme) =>
   createStyles({
-    sliderContainer: {
+    sliderMainContainer: {
       padding: '0 1em',
-      display: 'flex'
+      display: 'flex',
+      justifyContent: 'center'
+    },
+    sliderContainer: {
+      minWidth: 60,
+      margin: '0 1em'
     }
   })
 );
