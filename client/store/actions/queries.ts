@@ -1,7 +1,8 @@
 import { Types } from '../types';
 import setReducer from './index';
+import { IPayload } from '../reducers/queries';
 
-export const setIngredientQuery = (queries: object) => (dispatch) => {
+export const setIngredientQuery = (queries: IPayload) => (dispatch) => {
   try {
     dispatch(setReducer(Types.SET_QUERY_INGREDIENTS, queries));
   } catch (err) {

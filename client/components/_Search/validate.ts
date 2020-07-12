@@ -1,4 +1,4 @@
-import { IComplexSearch } from '../../interfaces/spoonacular';
+import { IComplexSearch } from '../../interfaces';
 
 export default (q: IComplexSearch) => {
   let data = { ...q };

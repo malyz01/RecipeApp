@@ -1,18 +1,25 @@
 import { Types } from '../types';
-import * as i from '../../interfaces';
+
+interface IAction {
+  type: Types;
+  payload: IPayload;
+}
+
+export interface IPayload {
+  key: string;
+  value: string[];
+}
 
 const INITIAL = {
-  ingredients: {
-    included: [],
-    excluded: []
-  },
+  includeIngredients: [],
+  excludeIngredients: [],
   nutrients: {}
 };
 
-export default (state = INITIAL, action: i.IAction) => {
+export default (state = INITIAL, action: IAction) => {
   switch (action.type) {
     case Types.SET_QUERY_INGREDIENTS:
-      return { ...state, ingredients: action.payload };
+      return { ...state, [action.payload.key]: action.payload.value };
     case Types.SET_QUERY_NUTRIENTS:
       return { ...state, nutrients: action.payload };
     default:
