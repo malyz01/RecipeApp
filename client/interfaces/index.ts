@@ -20,6 +20,42 @@ export interface INutrients {
   Fiber: number[];
 }
 
+export interface IIngredients {
+  id: number;
+  name: string;
+  localizedName: string;
+  image: string;
+}
+
+export interface IEquipment extends IIngredients {}
+
+export interface ISteps {
+  number: number;
+  step: string;
+  ingredients: IIngredients[];
+  equipment: IEquipment[];
+}
+
+export interface IAnalyzedInstructions {
+  name: string;
+  steps: ISteps[];
+}
+
+export interface IRecipe {
+  id: number;
+  title: string;
+  image: string;
+  imageType: string;
+  analyzedInstructions?: IAnalyzedInstructions[];
+  wineParing?: {};
+  occasions?: [];
+  diets?: string[];
+  dishTypes?: string[];
+  cuisines?: [];
+  summary?: string;
+  nutrition?: {}; //TODO finish this
+}
+
 export interface IComplexSearch {
   query: string;
   nutrients?: INutrients;
