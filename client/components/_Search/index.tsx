@@ -14,7 +14,7 @@ const index = (props: PropsFromRedux) => {
   const c = sIndex();
   const [searchQuery, setSearchQuery] = useState<IComplexSearch>({
     query: '',
-    addRecipeInformation: true
+    addRecipeNutrition: true
   });
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +54,7 @@ const index = (props: PropsFromRedux) => {
       </div>
 
       <div className="NutrionalInfo">
-        <FilterByNutri />
+        <FilterByNutri nutrients={props.nutrients} />
       </div>
 
       <div>
@@ -67,7 +67,8 @@ const index = (props: PropsFromRedux) => {
 };
 
 const mapState = (state) => ({
-  queries: state.queries
+  queries: state.queries,
+  nutrients: state.queries.nutrients
 });
 const mapDispatch = { ...spoonacular };
 const connector = connect(mapState, mapDispatch);

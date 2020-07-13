@@ -36,6 +36,10 @@ const index = (props: Props) => {
     setIngredients((prev) => ({ ...prev, [action]: '' }));
   };
 
+  const handleClearAll = () => {
+    props.setIngredientQuery({ key: action, value: [] });
+  };
+
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();
     setIngredients((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -70,7 +74,7 @@ const index = (props: Props) => {
               className={c.button}
               variant="contained"
               color="secondary"
-              onClick={() => alert('Add functionality')}
+              onClick={handleClearAll}
             >
               clear all
             </Button>
