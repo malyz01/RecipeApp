@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import Box from '@material-ui/core/Box';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -9,26 +10,13 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { sIndex } from './styles';
 
 import Ingredient from './Ingredient';
-import { IComplexSearch } from '../../../interfaces';
+import * as queries from '../../../store/actions/queries';
 import { capsCamelFirstWord } from '../../helpers';
 
-export interface IHandleQuery {
-  key: string;
-  val: string[];
-}
-
-type IProps = {
-  query: IComplexSearch;
-  handleQuery: (props: IHandleQuery) => void;
-  include: boolean;
-};
-
-// TODO refactor to use redux
-const index = ({ query, handleQuery, include }: IProps) => {
+const index = (props: Props) => {
   const c = sIndex();
-  const action = include ? 'includeIngredients' : 'excludeIngredients';
-  const placeholder = include ? 'Potato' : 'Coriander';
-  const q: string[] = (query[action] as string[]) || [];
+  const action = props.include ? 'includeIngredients' : 'excludeIngredients';
+  const placeholder = props.include ? 'Potato' : 'Coriander';
   const name = capsCamelFirstWord(action);
   const [ingredients, setIngredients] = useState({
     includeIngredients: '',
@@ -36,11 +24,15 @@ const index = ({ query, handleQuery, include }: IProps) => {
   });
 
   const handleIngredients = (option: string, filter?: string) => () => {
-    let newVal: string[] = q;
-    if (option === 'add' && ingredients[action] !== '') newVal.push(ingredients[action]);
-    if (option === 'del' && newVal.length) newVal = newVal.filter((i) => i !== filter);
+    let newVal: string[] = props[action];
 
-    handleQuery({ key: action, val: newVal });
+    if (option === 'add' && ingredients[action] !== '') {
+      newVal.push(ingredients[action]);
+    }
+    if (option === 'del' && newVal.length) {
+      newVal = newVal.filter((i) => i !== filter);
+    }
+    props.setIngredientQuery({ key: action, value: newVal });
     setIngredients((prev) => ({ ...prev, [action]: '' }));
   };
 
@@ -84,9 +76,9 @@ const index = ({ query, handleQuery, include }: IProps) => {
             </Button>
           </Box>
           <Box display="flex" flexWrap="wrap">
-            {q &&
-              Array.isArray(q) &&
-              q.map((ingredient, index) => (
+            {props[action] &&
+              Array.isArray(props[action]) &&
+              props[action].map((ingredient, index) => (
                 <Ingredient
                   key={index}
                   name={ingredient}
@@ -100,4 +92,17 @@ const index = ({ query, handleQuery, include }: IProps) => {
   );
 };
 
-export default index;
+const mapState = (state) => ({
+  includeIngredients: state.queries.includeIngredients,
+  excludeIngredients: state.queries.excludeIngredients
+});
+const mapDispatch = { ...queries };
+
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+interface Props extends PropsFromRedux {
+  include: boolean;
+}
+
+export default connector(index);

@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import { sIndex } from './styles';
 
-// import FilterByIngredient from './FilterByIngredient';
+import FilterByIngredient from './FilterByIngredient';
 import FilterByNutri from './FilterByNutri';
 import { IComplexSearch } from '../../interfaces';
 import * as e from '../../enum/spoonacular';
@@ -50,8 +50,8 @@ const index = (props: PropsFromRedux) => {
 
       <div className="searchIngredients">
         <h3>Search by Ingredients</h3>
-        {/* <FilterByIngredient include={true} />
-        <FilterByIngredient include={false} /> */}
+        <FilterByIngredient include={true} />
+        <FilterByIngredient include={false} />
       </div>
 
       <div className="NutrionalInfo">
