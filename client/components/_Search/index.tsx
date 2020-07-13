@@ -5,6 +5,7 @@ import { sIndex } from './styles';
 
 import FilterByIngredient from './FilterByIngredient';
 import FilterByNutri from './FilterByNutri';
+import RecipeDetail from './RecipeDetails';
 import { IComplexSearch } from '../../interfaces';
 import * as e from '../../enum/spoonacular';
 import * as spoonacular from '../../store/actions/spoonacular';
@@ -62,11 +63,16 @@ const index = (props: PropsFromRedux) => {
           Search
         </Button>
       </div>
+
+      <div>
+        {!!props.recipes.length && props.recipes.map((r, i) => <RecipeDetail key={i} {...r} />)}
+      </div>
     </div>
   );
 };
 
 const mapState = (state) => ({
+  recipes: state.spoonacular.recipes.data.results,
   queries: state.queries,
   nutrients: state.queries.nutrients
 });

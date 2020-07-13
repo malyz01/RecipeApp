@@ -1,16 +1,18 @@
 import React from 'react';
 import { sIndex } from './styles';
 
-const index = () => {
+import * as i from '../../../interfaces';
+
+const index = (props: i.IRecipe) => {
   const c = sIndex();
   return (
     <div className={c.mainContainer}>
-      <img src={'#'} />
+      <img src={props.image} />
       <div className={c.recipeDetailContainer}>
         <div>
-          <div>Chicken Tikka</div>
-          <div>Time: 30mins</div>
-          <div>Servings: 2</div>
+          <div>{props.title}</div>
+          <div>Ready in: {props.readyInMinutes}mins</div>
+          <div>Servings: {props.servings}</div>
         </div>
         <div>You have all the ingredients</div>
       </div>
