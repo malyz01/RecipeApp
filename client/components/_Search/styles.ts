@@ -20,6 +20,9 @@ export const sIndex = makeStyles((theme: Theme) =>
       width: '100%',
       boxSizing: 'border-box'
     },
+    btnContainer: {
+      margin: '1em 0'
+    },
     [theme.breakpoints.down(500)]: {
       fontSize: '12'
     }

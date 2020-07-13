@@ -58,7 +58,7 @@ const index = (props: PropsFromRedux) => {
         <FilterByNutri nutrients={props.nutrients} />
       </div>
 
-      <div>
+      <div className={c.btnContainer}>
         <Button onClick={onSubmit} fullWidth variant="contained" color="primary">
           Search
         </Button>
