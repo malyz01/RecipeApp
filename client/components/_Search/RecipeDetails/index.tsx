@@ -7,7 +7,7 @@ const index = (props: i.IRecipe) => {
   const c = sIndex();
   return (
     <div className={c.mainContainer}>
-      <img src={props.image} />
+      <img className={c.image} src={props.image} />
       <div className={c.recipeDetailContainer}>
         <div>
           <div>{props.title}</div>
