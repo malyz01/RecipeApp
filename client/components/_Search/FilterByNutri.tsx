@@ -21,6 +21,7 @@ const Nutrient = (props: IProps) => {
     props.setNutriQuery({ [nutri]: newValue as number[] });
   };
 
+  // TODO change sliders to be have a more user friendly experience
   return (
     <div>
       <h3>Nutrional Information</h3>
