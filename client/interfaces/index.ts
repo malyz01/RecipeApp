@@ -41,19 +41,46 @@ export interface IAnalyzedInstructions {
   steps: ISteps[];
 }
 
+export interface INutrition {
+  title: string;
+  amount: number;
+  unit: string;
+}
+
 export interface IRecipe {
   id: number;
   title: string;
   image: string;
   imageType: string;
+  servings?: number;
+  readyInMinutes?: number;
+  cuisines?: [];
+  nutrition?: INutrition[];
+  sourceName?: string;
+  sourceUrl?: string;
+  pricePerServing?: number;
   analyzedInstructions?: IAnalyzedInstructions[];
   wineParing?: {};
   occasions?: [];
   diets?: string[];
+  aggregateLikes?: number;
+  lowFodmap?: boolean;
+  gaps?: string;
+  spoonacularScore?: number;
+  healthScore?: number;
   dishTypes?: string[];
-  cuisines?: [];
   summary?: string;
-  nutrition?: {}; //TODO finish this
+  license?: string;
+  weightWatcherSmartPoints?: number;
+  creditsText?: string;
+  sustainable?: boolean;
+  veryPopular?: boolean;
+  cheap?: boolean;
+  veryHealthy?: boolean;
+  dairyFree?: boolean;
+  glutenFree?: boolean;
+  vegan?: boolean;
+  vegetarian?: boolean;
 }
 
 export interface IComplexSearch {
