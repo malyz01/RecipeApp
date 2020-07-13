@@ -19,7 +19,6 @@ export default (q: IComplexSearch) => {
 
   if (nutrientList.length) {
     for (const n of nutrientList) {
-      console.log({ [n]: nutrients[n] });
       data = { ...data, ...getMinMax({ [n]: nutrients[n] }) };
     }
   }

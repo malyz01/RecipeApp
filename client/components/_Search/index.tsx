@@ -25,8 +25,7 @@ const index = (props: PropsFromRedux) => {
   const onSubmit = () => {
     try {
       const params = validate({ ...searchQuery, ...props.queries });
-      console.log(params);
-      // props.fetchRecipesBy(e.Params.complexSearch, { params });
+      props.fetchRecipesBy(e.Params.complexSearch, { params });
     } catch (err) {
       alert(err.message);
     }
