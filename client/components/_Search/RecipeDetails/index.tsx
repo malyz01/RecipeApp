@@ -2,10 +2,11 @@ import React from 'react';
 import { sIndex } from './styles';
 
 const index = () => {
+  const c = sIndex();
   return (
-    <div>
+    <div className={c.mainContainer}>
       <img src={'#'} />
-      <div style={{ display: 'flex' }}>
+      <div className={c.recipeDetailContainer}>
         <div>
           <div>Chicken Tikka</div>
           <div>Time: 30mins</div>

@@ -4,6 +4,10 @@ export const sIndex = makeStyles((theme: Theme) =>
   createStyles({
     mainContainer: {
       maxHeight: 100
+    },
+    recipeDetailContainer: {
+      display: 'flex',
+      justifyContent: 'space-between'
     }
   })
 );
