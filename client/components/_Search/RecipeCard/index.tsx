@@ -10,7 +10,7 @@ const index = (props: i.IRecipe) => {
       <img className={c.image} src={props.image} />
       <div className={c.recipeDetailContainer}>
         <div>
-          <div>{props.title}</div>
+          <a href={props.sourceUrl}>{props.title}</a>
           <div>Ready in: {props.readyInMinutes}mins</div>
           <div>Servings: {props.servings}</div>
         </div>

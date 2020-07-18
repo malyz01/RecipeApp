@@ -6,14 +6,14 @@ import { sIndex } from './styles';
 import FilterByIngredient from './FilterByIngredient';
 import FilterByNutri from './FilterByNutri';
 import RecipeDetail from './RecipeCard';
-import { IComplexSearch } from '../../interfaces';
+import * as i from '../../interfaces';
 import * as e from '../../enum/spoonacular';
 import * as spoonacular from '../../store/actions/spoonacular';
 import validate from './validate';
 
 const index = (props: PropsFromRedux) => {
   const c = sIndex();
-  const [searchQuery, setSearchQuery] = useState<IComplexSearch>({
+  const [searchQuery, setSearchQuery] = useState<i.IComplexSearch>({
     query: '',
     addRecipeNutrition: true
   });
@@ -66,7 +66,7 @@ const index = (props: PropsFromRedux) => {
 
       <div>
         {!!props.recipes.length &&
-          props.recipes.map((r, i: number) => <RecipeDetail key={i} {...r} />)}
+          props.recipes.map((r: i.IRecipe, i: number) => <RecipeDetail key={i} {...r} />)}
       </div>
     </div>
   );
