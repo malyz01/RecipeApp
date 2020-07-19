@@ -14,7 +14,7 @@ const maxVal = {
   Fiber: 50
 };
 
-const Nutrient = (props: IProps) => {
+const Nutrient = (props: PropsFromRedux) => {
   const c = sFilterByNutri();
 
   const handleSlider = (nutri: string) => (event: any, newValue: number | number[]) => {
@@ -48,9 +48,5 @@ const Nutrient = (props: IProps) => {
 const mapDispatch = { ...queries };
 const connector = connect(null, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
-
-interface IProps extends PropsFromRedux {
-  nutrients: object;
-}
 
 export default connector(Nutrient);

@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import Pagination from '@material-ui/lab/Pagination';
 import { sIndex } from './styles';
 
 import FilterByIngredient from './FilterByIngredient';
@@ -15,7 +16,8 @@ const index = (props: PropsFromRedux) => {
   const c = sIndex();
   const [searchQuery, setSearchQuery] = useState<i.IComplexSearch>({
     query: '',
-    addRecipeNutrition: true
+    addRecipeNutrition: true,
+    offset: 0
   });
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +57,7 @@ const index = (props: PropsFromRedux) => {
       </div>
 
       <div className="NutrionalInfo">
-        <FilterByNutri nutrients={props.nutrients} />
+        <FilterByNutri />
       </div>
 
       <div className={c.btnContainer}>
@@ -65,8 +67,22 @@ const index = (props: PropsFromRedux) => {
       </div>
 
       <div>
-        {!!props.recipes.length &&
-          props.recipes.map((r: i.IRecipe, i: number) => <RecipeDetail key={i} {...r} />)}
+        {!!props.recipes.length && (
+          <>
+            {props.recipes.map((r: i.IRecipe, i: number) => (
+              <RecipeDetail key={i} {...r} />
+            ))}
+            <Pagination
+              count={props.page.totalResults}
+              onChange={(e, pageNum) => {
+                setSearchQuery((s) => ({ ...s, offset: pageNum * 10 - 10 }));
+                onSubmit();
+              }}
+              showFirstButton
+              showLastButton
+            />
+          </>
+        )}
       </div>
     </div>
   );
@@ -74,6 +90,7 @@ const index = (props: PropsFromRedux) => {
 
 const mapState = (state) => ({
   recipes: state.spoonacular.recipes.data.results,
+  page: state.spoonacular.recipes.data,
   queries: state.queries,
   nutrients: state.queries.nutrients
 });
