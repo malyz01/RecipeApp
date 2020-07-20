@@ -9,8 +9,6 @@ const toQuery = (body) => {
   };
 };
 
-const regex = /sss/;
-
 module.exports = {
   validateEmail,
   toQuery

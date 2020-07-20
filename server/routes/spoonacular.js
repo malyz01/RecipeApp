@@ -15,9 +15,4 @@ router.get('/recipes/:route', async (req, res) => {
   }
 });
 
-router.post('/', (req, res) => {
-  console.log(req.query);
-  res.json(req.body);
-});
-
 module.exports = router;
