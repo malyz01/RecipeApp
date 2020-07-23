@@ -47,7 +47,12 @@ const index = (props: Props) => {
 
   return (
     <Accordion classes={{ root: c.accordion }}>
-      <AccordionSummary className={c.accordionSummary} expandIcon={<ExpandMoreIcon />}>
+      <AccordionSummary
+        className={c.accordionSummary}
+        classes={{ expanded: c.expanded }}
+        IconButtonProps={{ size: 'small' }}
+        expandIcon={<ExpandMoreIcon />}
+      >
         <Typo variant="subtitle2">{name} Ingredients:</Typo>
       </AccordionSummary>
       <AccordionDetails className={c.accordionDetails}>

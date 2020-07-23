@@ -9,6 +9,10 @@ export const sIndex = makeStyles((theme: Theme) =>
     accordionSummary: {
       padding: '0'
     },
+    expanded: {
+      minHeight: '20px !important',
+      margin: '0 !important'
+    },
     accordionDetails: {
       padding: '0'
     },
