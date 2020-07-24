@@ -11,3 +11,11 @@ export const fetchRecipesBy = (params: string, queries: i.IQueries) => async (di
     console.log(err);
   }
 };
+
+export const selectRecipe = (data: i.IRecipe) => (dispatch) => {
+  try {
+    dispatch(setReducer(Types.SELECT_SPOONACULAR_RECIPE, data));
+  } catch (err) {
+    console.log(err);
+  }
+};
