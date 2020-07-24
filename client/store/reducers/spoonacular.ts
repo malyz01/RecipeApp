@@ -24,7 +24,8 @@ export default (state: IState = INITIAL, action: i.IAction) => {
     case Types.FETCH_SPOONACULAR_RECIPES:
       return { ...state, recipes: { pending: false, data: action.payload } };
     case Types.FETCH_SPOONACULAR_RECIPE_BY_ID:
-      return state;
+    case Types.SELECT_SPOONACULAR_RECIPE:
+      return { ...state, recipe: { pending: false, data: action.payload } };
     default:
       return state;
   }
