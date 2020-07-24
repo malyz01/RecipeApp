@@ -12,4 +12,8 @@ server.use(express.static(path.resolve('server', 'public')));
 
 server.use('/api/v1/spoonacular', require('./routes/spoonacular'));
 
+server.get('*', (req, res) => {
+  res.sendFile(path.resolve('server', 'public', 'index.html'));
+});
+
 module.exports = server;

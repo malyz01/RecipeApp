@@ -7,7 +7,7 @@ const index = (props: i.IRecipe) => {
   const c = sIndex();
   return (
     <div className={c.mainContainer}>
-      <img className={c.image} src={props.image} />
+      <img onClick={() => alert(`clicked ${props.title}`)} className={c.image} src={props.image} />
       <div className={c.recipeDetailContainer}>
         <div>
           <a href={props.sourceUrl}>{props.title}</a>
