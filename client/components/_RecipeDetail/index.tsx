@@ -6,25 +6,27 @@ import { sIndex } from './styles';
 import * as i from '../../interfaces';
 
 const index = (props: IProps) => {
+  const { recipe } = props;
   const c = sIndex();
   return (
     <div className={c.mainContainer}>
       <div>
-        <h4>{props.recipe.title}</h4>
-        <p>Source: {props.recipe.sourceName}</p>
+        <h4>{recipe.title}</h4>
+        <p>Source: {recipe.sourceName}</p>
         <p>
-          <img className={c.img} src={props.recipe.image} alt={props.recipe.title} />
+          <img className={c.img} src={recipe.image} alt={recipe.title} />
         </p>
       </div>
       <div>
         <h3>Instructions:</h3>
         <div>
-          {props.recipe.analyzedInstructions[0].steps.map((s, i) => (
-            <p key={i}>
-              <strong>Step {s.number}:</strong>
-              <div>{s.step}</div>
-            </p>
-          ))}
+          {!!recipe.analyzedInstructions.length &&
+            recipe.analyzedInstructions[0].steps.map((s, i) => (
+              <p key={i}>
+                <strong>Step {s.number}:</strong>
+                <div>{s.step}</div>
+              </p>
+            ))}
         </div>
       </div>
     </div>
