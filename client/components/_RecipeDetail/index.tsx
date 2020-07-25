@@ -1,19 +1,23 @@
 import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
+import { sIndex } from './styles';
 
 import * as i from '../../interfaces';
 
 const index = (props: IProps) => {
+  const c = sIndex();
   return (
-    <div>
+    <div className={c.mainContainer}>
       <div>
         <h4>Recipe Details</h4>
-        <p>Source: </p>
-        <p>Image </p>
+        <p>Source: {props.recipe.sourceName}</p>
+        <p>
+          <img src={props.recipe.image} alt={props.recipe.title} />
+        </p>
         <p>Etc </p>
       </div>
-      <div>Ingredients component</div>
+      <div>{props.recipe.summary}</div>
       <div>Instructions component</div>
     </div>
   );
