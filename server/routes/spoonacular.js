@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const api = require('../config/spoonacular');
-const { toQuery } = require('../helpers');
+const { toQuery } = require('../utils');
 
 // GET - /api/v1/spoonacular/recipes/:route
 router.get('/recipes/:route', async (req, res) => {
