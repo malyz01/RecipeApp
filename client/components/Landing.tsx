@@ -1,10 +1,9 @@
 import React from 'react';
-import Search from './_Search';
 
 const Landing = () => {
   return (
-    <div>
-      <Search />
+    <div style={{ textAlign: 'center' }}>
+      <h1>Landing page</h1>
     </div>
   );
 };

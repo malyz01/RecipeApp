@@ -21,6 +21,7 @@ const index = (props: IProps) => {
     offset: 0
   });
 
+  console.log(props);
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();
     setSearchQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));

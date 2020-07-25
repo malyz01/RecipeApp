@@ -10,15 +10,23 @@ const index = (props: IProps) => {
   return (
     <div className={c.mainContainer}>
       <div>
-        <h4>Recipe Details</h4>
+        <h4>{props.recipe.title}</h4>
         <p>Source: {props.recipe.sourceName}</p>
         <p>
-          <img src={props.recipe.image} alt={props.recipe.title} />
+          <img className={c.img} src={props.recipe.image} alt={props.recipe.title} />
         </p>
-        <p>Etc </p>
       </div>
-      <div>{props.recipe.summary}</div>
-      <div>Instructions component</div>
+      <div>
+        <h3>Instructions:</h3>
+        <div>
+          {props.recipe.analyzedInstructions[0].steps.map((s, i) => (
+            <p key={i}>
+              <strong>Step {s.number}:</strong>
+              <div>{s.step}</div>
+            </p>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

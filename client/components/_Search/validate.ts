@@ -5,9 +5,9 @@ export default (q: IComplexSearch) => {
   const nutrientList = Object.keys(nutrients);
   let data: IComplexSearch = { ...rest };
 
-  if (data.query === '') {
-    throw new Error('Please enter Recipe name');
-  }
+  // if (data.query === '') {
+  //   throw new Error('Please enter Recipe name');
+  // }
 
   if (includeIngredients.length && Array.isArray(includeIngredients)) {
     data.includeIngredients = includeIngredients.join(',');

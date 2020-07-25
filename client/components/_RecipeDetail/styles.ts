@@ -8,6 +8,9 @@ export const sIndex = makeStyles((theme: Theme) =>
       maxWidth: 500,
       minWidth: 300,
       width: '100%'
+    },
+    img: {
+      width: '100%'
     }
   })
 );
