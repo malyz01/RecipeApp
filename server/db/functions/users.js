@@ -7,6 +7,7 @@ async function registerUser(userData) {
     return { id, email };
   } catch (e) {
     console.log(e.message);
+    throw new Error('Email already exists');
   }
 }
 
