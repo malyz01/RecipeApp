@@ -26,6 +26,11 @@ const index = (props: IProps) => {
     setSearchQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const onSelect = (recipe: i.IRecipe) => {
+    props.selectRecipe(recipe);
+    props.history.push(`/recipes/${recipe.id}`);
+  };
+
   const onSubmit = () => {
     try {
       const params = validate({ ...searchQuery, ...props.queries });
@@ -71,7 +76,9 @@ const index = (props: IProps) => {
         {!!props.recipes.length && (
           <>
             {props.recipes.map((r: i.IRecipe, i: number) => (
-              <RecipeDetail key={i} {...r} />
+              <div onClick={() => onSelect(r)} key={i}>
+                <RecipeDetail {...r} />
+              </div>
             ))}
             <Pagination
               count={props.page.totalResults}

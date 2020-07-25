@@ -3,10 +3,7 @@ import { ConnectedProps, connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 
 const index = (props: IProps) => {
-  if (!!props.recipe) {
-    console.log('there is no data');
-    console.log(props);
-  }
+  console.log(props.recipe);
   return (
     <div>
       <div>

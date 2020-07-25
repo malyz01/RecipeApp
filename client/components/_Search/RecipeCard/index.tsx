@@ -7,10 +7,12 @@ const index = (props: i.IRecipe) => {
   const c = sIndex();
   return (
     <div className={c.mainContainer}>
-      <img onClick={() => alert(`clicked ${props.title}`)} className={c.image} src={props.image} />
+      <img className={c.image} src={props.image} />
       <div className={c.recipeDetailContainer}>
         <div>
-          <a href={props.sourceUrl}>{props.title}</a>
+          <div onClick={(e) => e.stopPropagation()}>
+            <a href={props.sourceUrl}>{props.title}</a>
+          </div>
           <div>Ready in: {props.readyInMinutes}mins</div>
           <div>Servings: {props.servings}</div>
         </div>
