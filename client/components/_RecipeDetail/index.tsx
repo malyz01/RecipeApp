@@ -2,8 +2,9 @@ import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 
+import * as i from '../../interfaces';
+
 const index = (props: IProps) => {
-  console.log(props.recipe);
   return (
     <div>
       <div>
@@ -18,7 +19,16 @@ const index = (props: IProps) => {
   );
 };
 
-const mapState = (state) => ({
+interface IState {
+  spoonacular: {
+    recipe: {
+      pending: boolean;
+      data: i.IRecipe;
+    };
+  };
+}
+
+const mapState = (state: IState) => ({
   recipe: state.spoonacular.recipe.data
 });
 const connector = connect(mapState);
