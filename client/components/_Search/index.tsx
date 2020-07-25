@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Pagination from '@material-ui/lab/Pagination';
 import { sIndex } from './styles';
@@ -12,7 +13,7 @@ import * as e from '../../enum/spoonacular';
 import * as spoonacular from '../../store/actions/spoonacular';
 import validate from './validate';
 
-const index = (props: PropsFromRedux) => {
+const index = (props: IProps) => {
   const c = sIndex();
   const [searchQuery, setSearchQuery] = useState<i.IComplexSearch>({
     query: '',
@@ -98,9 +99,6 @@ const mapDispatch = { ...spoonacular };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-// If props are passdown
-// type Props = PropsFromRedux & {
-//   backgroundColor: string
-// }
+interface IProps extends PropsFromRedux, RouteComponentProps {}
 
 export default connector(index);

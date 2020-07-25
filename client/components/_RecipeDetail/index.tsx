@@ -1,6 +1,12 @@
 import React from 'react';
+import { ConnectedProps, connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
 
-const index = (props) => {
+const index = (props: IProps) => {
+  if (!!props.recipe) {
+    console.log('there is no data');
+    console.log(props);
+  }
   return (
     <div>
       <div>
@@ -15,4 +21,12 @@ const index = (props) => {
   );
 };
 
-export default index;
+const mapState = (state) => ({
+  recipe: state.spoonacular.recipe.data
+});
+const connector = connect(mapState);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+interface IProps extends PropsFromRedux, RouteComponentProps {}
+
+export default connector(index);
