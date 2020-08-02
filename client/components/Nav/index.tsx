@@ -1,24 +1,21 @@
 import React from 'react';
+import Typo from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { sIndex } from './styles';
 
-import { IProps } from './interface';
+const index = () => {
+  const c = sIndex();
+  const handleClick = () => {
+    alert('add functionality');
+  };
 
-const index = ({ sample }: IProps) => {
   return (
-    <div
-      style={{
-        height: '100px',
-        background: 'black',
-        color: 'white',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
-    >
-      {sample.map((x, i) => (
-        <div key={i}>
-          {x.id}: {x.name}
-        </div>
-      ))}
+    <div className={c.mainContainer}>
+      <Typo variant="h6">Recipe app</Typo>
+      <IconButton onClick={handleClick} className={c.iconButton}>
+        <MoreVertIcon />
+      </IconButton>
     </div>
   );
 };

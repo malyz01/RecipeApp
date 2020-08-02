@@ -2,8 +2,8 @@ import React, { PureComponent, ChangeEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import './style.css';
 
-import * as i from '../../interfaces/spoonacular';
-import * as spoonacular from '../../store/actions/spoonacular';
+import * as i from '../../client/interfaces';
+import * as spoonacular from '../../client/store/actions/spoonacular';
 import Recipe from './Recipes';
 
 const mapState = (state) => ({ recipes: state.spoonacular.recipes.data.results });

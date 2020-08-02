@@ -1,6 +1,6 @@
 const validateEmail = (email) => {
-  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  return re.test(email);
+  var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return reg.test(email);
 };
 
 const toQuery = (body) => {
@@ -8,8 +8,6 @@ const toQuery = (body) => {
     params: { ...body }
   };
 };
-
-const regex = /sss/;
 
 module.exports = {
   validateEmail,

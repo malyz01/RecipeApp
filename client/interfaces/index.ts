@@ -1,30 +1,91 @@
-export interface IRecipeInformation {
-  includeNutrition?: boolean;
+export interface IData {
+  pending: boolean;
+  data: object;
 }
 
-export interface ISimilarRecipes {
-  number?: number;
-  limitLicense?: boolean;
+export interface IAction {
+  type: string;
+  payload: object | Array<object> | string;
 }
 
-export interface IAnalyzedRecipeInstructions {
-  stepBreakdown?: boolean;
+export interface IQueries {
+  params: IComplexSearch;
 }
 
-export interface ISearch {
-  query: string;
-  cuisine?: string;
-  diet?: string;
-  excludeIngredients?: string;
-  intolerances?: string;
-  offset?: number;
-  number?: number;
-  limitLicense?: boolean;
-  instructionsRequired?: boolean;
+export interface INutrients {
+  Calories: number[];
+  Carbs: number[];
+  Protein: number[];
+  Fat: number[];
+  Fiber: number[];
+}
+
+export interface IIngredients {
+  id: number;
+  name: string;
+  localizedName: string;
+  image: string;
+}
+
+export interface IEquipment extends IIngredients {}
+
+export interface ISteps {
+  number: number;
+  step: string;
+  ingredients: IIngredients[];
+  equipment: IEquipment[];
+}
+
+export interface IAnalyzedInstructions {
+  name: string;
+  steps: ISteps[];
+}
+
+export interface INutrition {
+  title: string;
+  amount: number;
+  unit: string;
+}
+
+export interface IRecipe {
+  id: number;
+  title: string;
+  image: string;
+  imageType: string;
+  servings?: number;
+  readyInMinutes?: number;
+  cuisines?: [];
+  nutrition?: INutrition[];
+  sourceName?: string;
+  sourceUrl?: string;
+  pricePerServing?: number;
+  analyzedInstructions?: IAnalyzedInstructions[];
+  wineParing?: {};
+  occasions?: [];
+  diets?: string[];
+  aggregateLikes?: number;
+  lowFodmap?: boolean;
+  gaps?: string;
+  spoonacularScore?: number;
+  healthScore?: number;
+  dishTypes?: string[];
+  summary?: string;
+  license?: string;
+  weightWatcherSmartPoints?: number;
+  creditsText?: string;
+  sustainable?: boolean;
+  veryPopular?: boolean;
+  cheap?: boolean;
+  veryHealthy?: boolean;
+  dairyFree?: boolean;
+  glutenFree?: boolean;
+  vegan?: boolean;
+  vegetarian?: boolean;
 }
 
 export interface IComplexSearch {
   query: string;
+  nutrients?: INutrients;
   cuisine?: string;
   excludeCuisine?: string;
   diet?: string;
@@ -120,8 +181,4 @@ export interface IComplexSearch {
   offset?: number;
   number?: number;
   limitLicense?: boolean;
-}
-
-export interface IQueries {
-  params: {};
 }

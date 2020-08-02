@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const api = require('../config/spoonacular');
-const { toQuery } = require('../helpers');
+const { toQuery } = require('../utils');
 
 // GET - /api/v1/spoonacular/recipes/:route
 router.get('/recipes/:route', async (req, res) => {
@@ -13,11 +13,6 @@ router.get('/recipes/:route', async (req, res) => {
     console.log(err.response.data);
     res.status(400).res.json(`Error: spoonacular Get - /${route}`);
   }
-});
-
-router.post('/', (req, res) => {
-  console.log(req.query);
-  res.json(req.body);
 });
 
 module.exports = router;

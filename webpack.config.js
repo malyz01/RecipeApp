@@ -1,5 +1,5 @@
-const path = require('path')
-const Dotenv = require('dotenv-webpack')
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -41,4 +41,4 @@ module.exports = {
   devServer: {
     contentBase: './server/public'
   }
-}
+};

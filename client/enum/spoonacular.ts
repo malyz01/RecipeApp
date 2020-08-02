@@ -1,8 +1,8 @@
 export enum Params {
-  search = 'Search',
-  findByIngredients = 'Find by Ingredients',
-  findByNutrients = 'Find by Nutrients',
-  complexSearch = 'Complex search'
+  search = 'search',
+  findByIngredients = 'findByIngredients',
+  findByNutrients = 'findByNutrients',
+  complexSearch = 'complexSearch'
 }
 
 export enum EQSearch {
@@ -38,4 +38,12 @@ export enum EQComplex {
   number = 'number',
   limitLicense = 'limitLicense',
   instructionsRequired = 'instructionsRequired'
+}
+
+export enum ENutrients {
+  calories = 'Calories',
+  carbs = 'Carbs',
+  protein = 'Protein',
+  fat = 'Fat',
+  fiber = 'Fiber'
 }
