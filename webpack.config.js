@@ -1,5 +1,5 @@
-const path = require('path')
-const Dotenv = require('dotenv-webpack')
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -12,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/,
+        test: /\.(ts)x?$/,
         loader: 'babel-loader',
         exclude: /node_modules/
       },
@@ -35,10 +35,10 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx']
+    extensions: ['.ts', '.tsx']
   },
   devtool: 'source-map',
   devServer: {
     contentBase: './server/public'
   }
-}
+};
