@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     min: [8, 'Password is too short'],
     required: 'please enter a password'
   },
-  // profile: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile' },
+  profile: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile' },
   resetPasswordToken: String,
   resetPasswordExpires: Date,
   resetEmailToken: String,

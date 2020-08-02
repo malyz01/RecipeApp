@@ -3,11 +3,9 @@ const validateEmail = (email) => {
   return reg.test(email);
 };
 
-const toQuery = (body) => {
-  return {
-    params: { ...body }
-  };
-};
+const toQuery = (body) => ({
+  params: { ...body }
+});
 
 module.exports = {
   validateEmail,
