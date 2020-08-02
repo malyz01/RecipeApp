@@ -7,7 +7,7 @@ const Landing = (props) => {
   const c = sIndex();
   return (
     <div className={c.mainContainer}>
-      <h1>Landing page</h1>
+      <h1>Welcome!</h1>
       <Links {...props} />
     </div>
   );

@@ -16,3 +16,14 @@ export const sIndex = makeStyles((theme: Theme) =>
     }
   })
 );
+
+export const sDrawer = makeStyles((theme: Theme) =>
+  createStyles({
+    list: {
+      width: 250
+    },
+    iconButton: {
+      color: 'white'
+    }
+  })
+);

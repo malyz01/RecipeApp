@@ -5,34 +5,18 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-
-const useStyles = makeStyles({
-  list: {
-    width: 250
-  },
-  fullList: {
-    width: 'auto'
-  }
-});
-
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
+import { sDrawer } from './styles';
 
 export default function TemporaryDrawer() {
-  const classes = useStyles();
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false
-  });
+  const c = sDrawer();
+  const [state, setState] = React.useState(false);
 
-  const toggleDrawer = (anchor: Anchor, open: boolean) => (
-    event: React.KeyboardEvent | React.MouseEvent
-  ) => {
+  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
       event.type === 'keydown' &&
       ((event as React.KeyboardEvent).key === 'Tab' ||
@@ -41,17 +25,15 @@ export default function TemporaryDrawer() {
       return;
     }
 
-    setState({ ...state, [anchor]: open });
+    setState(open);
   };
 
-  const list = (anchor: Anchor) => (
+  const list = () => (
     <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom'
-      })}
+      className={c.list}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
     >
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -75,14 +57,12 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      {(['left', 'right', 'top', 'bottom'] as Anchor[]).map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+      <Button onClick={toggleDrawer(true)}>
+        <MoreVertIcon className={c.iconButton} />
+      </Button>
+      <Drawer anchor={'right'} open={state} onClose={toggleDrawer(false)}>
+        {list()}
+      </Drawer>
     </div>
   );
 }
