@@ -18,6 +18,7 @@
     "test": "jest --watchAll"
   },
   "jest": {
+    "preset": "@shelf/jest-mongodb",
     "setupFiles": [
       "./tests/client/setup.js"
     ]
