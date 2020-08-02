@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Nav from './Nav';
-import Landing from './Landing';
+import Landing from './_Landing';
 import Search from './_Search';
 import RecipeDetail from './_RecipeDetail';
 import UDE from './_UrlDoesNotExist';
