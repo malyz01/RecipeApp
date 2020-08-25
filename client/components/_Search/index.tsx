@@ -22,8 +22,7 @@ const index = (props: IProps) => {
   });
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setSearchQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setSearchQuery({ ...searchQuery, [e.target.name]: e.target.value });
   };
 
   const onSelect = (recipe: i.IRecipe) => {
