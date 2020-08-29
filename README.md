@@ -4,6 +4,12 @@
 
 - Beta repo for recipe app
 
+### Contributors
+
+- UI/UX - [Yohan Ryoo](https://github.com/yohanryoo1)
+- Lead Developer - [Matthew Uy](https://github.com/malyz01)
+- Developer - [Jimmi Meredith](https://github.com/jimmi-meredith)
+
 ### Main Features:
 
 - Basic recipe search
@@ -15,4 +21,4 @@
 
 ### Api
 
-- [https://spoonacular.com/food-api](Spoonacular)
+- [Spoonacular](https://spoonacular.com/food-api "Spoonacular")
