@@ -1,4 +1,4 @@
-* UNDER DEVELOPMENT
+> UNDER DEVELOPMENT
 
 ## Recipe App (Stack: React - Typescript, NodeJS, Express, MongoDB)
 
@@ -12,3 +12,7 @@
   - Exclude ingredients
   - Based on nutrients
 - Generate meal plan
+
+### Api
+
+- [https://spoonacular.com/food-api](Spoonacular)
