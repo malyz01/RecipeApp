@@ -16,7 +16,6 @@
 - Complex recipe search
   - Include ingredients
   - Exclude ingredients
-  - Based on nutrients
 - Generate meal plan
 
 ### Api
