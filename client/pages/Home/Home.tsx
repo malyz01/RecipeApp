@@ -1,12 +1,13 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useContext } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import Textfield from '@material-ui/core/TextField';
-import useStyles from './homeStyle';
+import useStyles from './styles';
 
 import * as I from '../../interface';
 import * as spoonacular from '../../store/actions/spoonacular';
 import FilterByIngredient from '../../containers/Search/FilterByIngredient';
+import FilterInput from '../../containers/Search/FilterInput';
 
 const Home: React.FC<IProps> = (props) => {
   const c = useStyles();
@@ -15,9 +16,27 @@ const Home: React.FC<IProps> = (props) => {
     addRecipeNutrition: true,
     offset: 0
   });
+  const [state, setState] = useState({
+    include: [],
+    exclude: []
+  });
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery({ ...searchQuery, [e.target.name]: e.target.value });
+  };
+
+  const handleFilter = (mode: string, fltr: string, val: string) => {
+    switch (mode) {
+      case 'add':
+        if (state[fltr].includes(val)) return;
+        return setState({ ...state, [fltr]: [...state[fltr], val] });
+      case 'del':
+        return setState({ ...state, [fltr]: state[fltr].filter((i: string) => i !== val) });
+      case 'clear':
+        return setState({ ...state, [fltr]: [] });
+      default:
+        return;
+    }
   };
 
   return (
@@ -31,36 +50,21 @@ const Home: React.FC<IProps> = (props) => {
             name="query"
             onChange={onChange}
             value={searchQuery.query}
-            type="text"
             placeholder="e.g. Chicken Curry"
           />
         </div>
       </section>
 
       <section>
-        <FilterByIngredient>
-          <Textfield
-            className={c.searchInput}
-            variant="outlined"
-            name="query"
-            onChange={onChange}
-            value={searchQuery.query}
-            type="text"
-            placeholder="e.g. Chicken Curry"
-          />
+        <FilterByIngredient summary="Include ingredients">
+          <FilterInput name="include" data={state.include} handleFilter={handleFilter} />
         </FilterByIngredient>
-        <FilterByIngredient>
-          <Textfield
-            className={c.searchInput}
-            variant="outlined"
-            name="query"
-            onChange={onChange}
-            value={searchQuery.query}
-            type="text"
-            placeholder="e.g. Chicken Curry"
-          />
+        <FilterByIngredient summary="Exclude ingredients">
+          <FilterInput name="exclude" data={state.exclude} handleFilter={handleFilter} />
         </FilterByIngredient>
       </section>
+
+      <section></section>
     </main>
   );
 };
@@ -68,9 +72,9 @@ const Home: React.FC<IProps> = (props) => {
 const mapState = (state) => ({
   recipes: state.spoonacular.recipes.data.results,
   page: state.spoonacular.recipes.data,
-  queries: state.queries,
-  nutrients: state.queries.nutrients
+  queries: state.queries
 });
+
 const mapDispatch = { ...spoonacular };
 const connector = connect(mapState, mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
