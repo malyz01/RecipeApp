@@ -9,7 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Typography from '@material-ui/core/Typography';
-import useStyles from './NavStyles';
+import useStyles from './styles';
 
 const index = () => {
   const c = useStyles();
