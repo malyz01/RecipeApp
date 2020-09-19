@@ -4,14 +4,16 @@ export default makeStyles((theme: Theme) =>
   createStyles({
     mainContainer: {
       margin: '0 auto',
-      padding: '0 .5em',
+      padding: '2rem .5em',
       maxWidth: 500,
       minWidth: 300,
-      width: '100%',
-      textAlign: 'center'
+      width: '100%'
     },
+    // section: {
+    //   marginBottom: ''
+    // },
     searchHeading: {
-      marginBottom: 0
+      margin: '.8rem 0 .5rem'
     },
     searchInputContainer: {
       textAlign: 'center'
