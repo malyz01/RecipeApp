@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import clsx from 'clsx';
 import Box from '@material-ui/core/Box';
 import Textfield from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -29,24 +30,22 @@ const FilterInput: React.FC<Props> = (props) => {
   };
 
   return (
-    <main>
-      <section className={c.section}>
-        <div>
-          <Box>
-            <form onSubmit={handleSubmit(handleAdd)}>
-              <Textfield name={name} variant="outlined" inputRef={register()} />
-              <Button variant="contained" type="submit">
-                Add
-              </Button>
-            </form>
-          </Box>
-        </div>
-
-        <div>
-          <Button variant="contained" onClick={handleClear}>
-            clear all
+    <main className={c.main}>
+      <section className={clsx(c.section, c.inputContainer)}>
+        <form onSubmit={handleSubmit(handleAdd)}>
+          <Textfield
+            InputProps={{ classes: { root: c.input } }}
+            name={name}
+            variant="outlined"
+            inputRef={register()}
+          />
+          <Button className={c.addBtn} variant="contained" type="submit">
+            Add
           </Button>
-        </div>
+        </form>
+        <Button variant="contained" onClick={handleClear}>
+          clear all
+        </Button>
       </section>
 
       <section className={c.section}>
