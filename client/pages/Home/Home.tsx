@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, useContext } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
 import Textfield from '@material-ui/core/TextField';
 import useStyles from './styles';
 
@@ -41,25 +42,28 @@ const Home: React.FC<IProps> = (props) => {
 
   return (
     <main className={c.mainContainer}>
-      <section className="searchRecipe">
-        <h3 className={c.searchHeading}>Search by Recipe Name</h3>
-        <div className={c.searchInputContainer}>
-          <Textfield
-            className={c.searchInput}
-            variant="outlined"
-            name="query"
-            onChange={onChange}
-            value={searchQuery.query}
-            placeholder="e.g. Chicken Curry"
-          />
-        </div>
+      <section>
+        <Typography variant="h6" className={c.searchHeading}>
+          Search by recipe name
+        </Typography>
+        <Textfield
+          className={c.searchInput}
+          variant="outlined"
+          name="query"
+          onChange={onChange}
+          value={searchQuery.query}
+          placeholder="e.g. Chicken Curry"
+        />
       </section>
 
       <section>
-        <FilterByIngredient summary="Include ingredients">
+        <Typography variant="h6" className={c.searchHeading}>
+          Search by ingredients
+        </Typography>
+        <FilterByIngredient summary="Include by ingredients">
           <FilterInput name="include" data={state.include} handleFilter={handleFilter} />
         </FilterByIngredient>
-        <FilterByIngredient summary="Exclude ingredients">
+        <FilterByIngredient summary="Exclude by ingredients">
           <FilterInput name="exclude" data={state.exclude} handleFilter={handleFilter} />
         </FilterByIngredient>
       </section>
