@@ -9,6 +9,7 @@ import * as I from '../../interface';
 import * as spoonacular from '../../store/actions/spoonacular';
 import FilterByIngredient from '../../containers/Search/FilterByIngredient';
 import FilterInput from '../../containers/Search/FilterInput';
+import Input from '../../components/Input';
 
 const Home: React.FC<IProps> = (props) => {
   const c = useStyles();
@@ -68,7 +69,10 @@ const Home: React.FC<IProps> = (props) => {
         </FilterByIngredient>
       </section>
 
-      <section></section>
+      <section>
+        Recipe card results
+        <Input />
+      </section>
     </main>
   );
 };

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import clsx from 'clsx';
 import Box from '@material-ui/core/Box';
 import Textfield from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
@@ -33,6 +34,7 @@ const FilterInput: React.FC<Props> = (props) => {
     <main className={c.main}>
       <section className={clsx(c.section, c.inputContainer)}>
         <form onSubmit={handleSubmit(handleAdd)}>
+          <Input classes={{ root: c.input }} inputRef={register()} />
           <Textfield
             InputProps={{ classes: { root: c.input } }}
             name={name}

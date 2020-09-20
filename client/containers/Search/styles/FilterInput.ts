@@ -14,7 +14,18 @@ export default makeStyles((theme: Theme) =>
     },
     input: {
       maxHeight: 40,
-      borderRight: 'none'
+      border: '1px solid #e2e2e1',
+      '& .MuiInput-input': {
+        '& fieldset': {
+          borderColor: 'red'
+        }
+      },
+      borderRight: 'none',
+      '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+          borderColor: 'red'
+        }
+      }
     },
     addBtn: {
       height: '100%'
