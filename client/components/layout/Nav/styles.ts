@@ -4,7 +4,7 @@ export default makeStyles((theme: Theme) =>
   createStyles({
     mainContainer: {
       height: 80,
-      backgroundColor: theme.palette.secondary.main,
+      backgroundColor: theme.palette.primary.main,
       color: 'white',
       display: 'flex',
       justifyContent: 'space-between',
