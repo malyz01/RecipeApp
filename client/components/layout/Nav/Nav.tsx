@@ -11,7 +11,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import Typography from '@material-ui/core/Typography';
 import useStyles from './styles';
 
-const index = () => {
+const Nav = () => {
   const c = useStyles();
   const [state, setState] = React.useState(false);
 
@@ -60,4 +60,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Nav;
