@@ -14,28 +14,32 @@ export default makeStyles((theme: Theme) =>
     },
     input: {
       maxHeight: 40,
-      border: '1px solid #e2e2e1',
-      '& .MuiInput-input': {
-        '& fieldset': {
-          borderColor: 'red'
-        }
+      '& fieldset': {
+        borderRight: 'none',
+        borderRadius: '5px 0 0 5px'
       },
-      borderRight: 'none',
-      '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          borderColor: 'red'
-        }
+      '&&:hover fieldset': {
+        borderColor: theme.palette.secondary.main
+      },
+      '&&.Mui-focused fieldset': {
+        borderColor: theme.palette.primary.main,
+        borderWidth: '1px'
       }
     },
     addBtn: {
-      height: '100%'
+      height: '100%',
+      borderRadius: '0 5px 5px 0'
     },
     paper: {
       display: 'flex',
       alignItems: 'center',
-      padding: '.5rem 1rem',
+      padding: '.5rem .5rem',
       margin: '0 .5rem .5rem 0',
-      background: theme.palette.primary.main
+      background: theme.palette.primary.main,
+      color: 'white'
+    },
+    ingredientsContainer: {
+      flexWrap: 'wrap'
     },
     closeIcon: {
       cursor: 'pointer'
