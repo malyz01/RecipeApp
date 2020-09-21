@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, useContext } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Textfield from '@material-ui/core/TextField';
 import useStyles from './styles';
 
@@ -9,10 +10,11 @@ import * as I from '../../interface';
 import * as spoonacular from '../../store/actions/spoonacular';
 import FilterByIngredient from '../../containers/Search/FilterByIngredient';
 import FilterInput from '../../containers/Search/FilterInput';
-import Input from '../../components/Input';
+import RecipeCard from '../../containers/Search/RecipeCard';
 
 const Home: React.FC<IProps> = (props) => {
   const c = useStyles();
+  const [result, setResult] = useState<null | any[]>(null);
   const [searchQuery, setSearchQuery] = useState<I.IComplexSearch>({
     query: '',
     addRecipeNutrition: true,
@@ -69,10 +71,11 @@ const Home: React.FC<IProps> = (props) => {
         </FilterByIngredient>
       </section>
 
-      <section>
-        Recipe card results
-        <Input />
-      </section>
+      <Button className={c.searchBtn} color="primary" variant="contained" fullWidth>
+        Search
+      </Button>
+
+      <section>{result && result.map((res) => <RecipeCard key={res.id} {...res} />)}</section>
     </main>
   );
 };
