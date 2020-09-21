@@ -10,7 +10,7 @@ import * as queries from '../../store/actions/queries';
 
 const FilterByIngredient: React.FC<Props> = (props) => {
   return (
-    <Accordion>
+    <Accordion elevation={3}>
       <AccordionSummary IconButtonProps={{ size: 'small' }} expandIcon={<ExpandMoreIcon />}>
         <Typography variant="subtitle2">{props.summary}</Typography>
       </AccordionSummary>
