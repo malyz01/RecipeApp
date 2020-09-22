@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useContext } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
@@ -8,7 +8,7 @@ import useStyles from './styles';
 
 import * as I from '../../interface';
 import * as spoonacular from '../../store/actions/spoonacular';
-import FilterByIngredient from '../../containers/Search/FilterByIngredient';
+import Accordion from '../../components/Accordion';
 import FilterInput from '../../containers/Search/FilterInput';
 import RecipeCard from '../../containers/Search/RecipeCard';
 
@@ -63,12 +63,12 @@ const Home: React.FC<IProps> = (props) => {
         <Typography variant="h6" className={c.searchHeading}>
           Search by ingredients
         </Typography>
-        <FilterByIngredient summary="Include by ingredients">
+        <Accordion summary="Include by ingredients">
           <FilterInput name="include" data={state.include} handleFilter={handleFilter} />
-        </FilterByIngredient>
-        <FilterByIngredient summary="Exclude by ingredients">
+        </Accordion>
+        <Accordion summary="Exclude by ingredients">
           <FilterInput name="exclude" data={state.exclude} handleFilter={handleFilter} />
-        </FilterByIngredient>
+        </Accordion>
       </section>
 
       <Button className={c.searchBtn} color="primary" variant="contained" fullWidth>
