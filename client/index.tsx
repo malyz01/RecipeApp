@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './Theme';
 
-import App from './containers/App';
+import App from './App';
 import reducers from './store/reducers';
 
 declare global {
