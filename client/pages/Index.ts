@@ -1,11 +1,7 @@
-import Landing from './Landing';
-import RecipeDetail from './RecipeDetail';
-import Search from './Search';
-import UrlDNE from './_UrlDoesNotExist';
+import Home from './Home';
+import NotFound from './NotFound';
 
 export default {
-  Landing,
-  RecipeDetail,
-  Search,
-  UrlDNE
+  Home,
+  NotFound
 };
