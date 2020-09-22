@@ -45,35 +45,37 @@ const Home: React.FC<IProps> = (props) => {
 
   return (
     <main className={c.mainContainer}>
-      <section>
+      <section className={c.section}>
         <Typography variant="h6" className={c.searchHeading}>
           Search by recipe name
         </Typography>
-        <Textfield
-          className={c.searchInput}
-          variant="outlined"
-          name="query"
-          onChange={onChange}
-          value={searchQuery.query}
-          placeholder="e.g. Chicken Curry"
-        />
+        <div className={c.searchContainer}>
+          <Textfield
+            className={c.searchInput}
+            InputProps={{ className: c.input }}
+            variant="outlined"
+            name="query"
+            onChange={onChange}
+            value={searchQuery.query}
+            placeholder="e.g. Chicken Curry"
+          />
+          <Button className={c.searchBtn} color="primary" variant="contained">
+            Search
+          </Button>
+        </div>
       </section>
 
-      <section>
-        <Typography variant="h6" className={c.searchHeading}>
-          Search by ingredients
+      <section className={c.section}>
+        <Typography variant="subtitle2" className={c.searchHeading}>
+          Filter by ingredients
         </Typography>
-        <Accordion summary="Include by ingredients">
+        <Accordion summary="Include ingredients">
           <FilterInput name="include" data={state.include} handleFilter={handleFilter} />
         </Accordion>
-        <Accordion summary="Exclude by ingredients">
+        <Accordion summary="Exclude ingredients">
           <FilterInput name="exclude" data={state.exclude} handleFilter={handleFilter} />
         </Accordion>
       </section>
-
-      <Button className={c.searchBtn} color="primary" variant="contained" fullWidth>
-        Search
-      </Button>
 
       <section>{result && result.map((res) => <RecipeCard key={res.id} {...res} />)}</section>
     </main>
