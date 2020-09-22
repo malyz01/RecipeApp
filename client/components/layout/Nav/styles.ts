@@ -4,15 +4,12 @@ export default makeStyles((theme: Theme) =>
   createStyles({
     mainContainer: {
       height: 80,
-      backgroundColor: theme.palette.primary.main,
-      color: 'white',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: '0 3em'
-    },
-    iconButton: {
-      color: 'white'
+      padding: '0 3em',
+      maxWidth: 900,
+      margin: '0 auto'
     },
     list: {
       width: 250
