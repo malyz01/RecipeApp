@@ -46,17 +46,17 @@ const Nav = () => {
   );
 
   return (
-    <div className={c.mainContainer}>
+    <main className={c.mainContainer}>
       <Typography variant="h6">Recipe app</Typography>
       <section>
         <Button onClick={toggleDrawer(true)}>
-          <MoreVertIcon className={c.iconButton} />
+          <MoreVertIcon />
         </Button>
         <Drawer anchor={'right'} open={state} onClose={toggleDrawer(false)}>
           {list()}
         </Drawer>
       </section>
-    </div>
+    </main>
   );
 };
 
