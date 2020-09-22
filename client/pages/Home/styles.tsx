@@ -9,16 +9,34 @@ export default makeStyles((theme: Theme) =>
       minWidth: 300,
       width: '100%'
     },
-    searchHeading: {
-      margin: '.8rem 0 .5rem'
+    section: {
+      marginBottom: '1.5rem'
+    },
+    searchContainer: {
+      display: 'flex'
     },
     searchInput: {
       width: '100%',
       boxSizing: 'border-box'
     },
-    searchBtn: {
-      margin: '1.5rem 0'
+    input: {
+      maxHeight: 40,
+      '& fieldset': {
+        borderRight: 'none',
+        borderRadius: '5px 0 0 5px'
+      },
+      '&&:hover fieldset': {
+        borderColor: theme.palette.secondary.main
+      },
+      '&&.Mui-focused fieldset': {
+        borderColor: theme.palette.primary.main,
+        borderWidth: '1px'
+      }
     },
+    searchHeading: {
+      margin: '.8rem 0 .5rem'
+    },
+
     [theme.breakpoints.down(500)]: {
       fontSize: '12'
     }
