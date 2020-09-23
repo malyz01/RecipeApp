@@ -16,7 +16,6 @@ import validate from '../../containers/Home/validate';
 const Home: React.FC<IProps> = (props) => {
   const { fetchRecipesBy, recipes } = props;
   const c = useStyles();
-  const [result, setResult] = useState<null | any[]>(null);
   const [searchQuery, setSearchQuery] = useState<I.IComplexSearch>({
     query: '',
     addRecipeNutrition: true,
