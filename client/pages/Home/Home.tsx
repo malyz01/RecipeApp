@@ -8,11 +8,13 @@ import useStyles from './styles';
 
 import * as I from '../../interface';
 import * as spoonacular from '../../store/actions/spoonacular';
+import validate from '../../containers/Search/validate';
 import Accordion from '../../components/Accordion';
 import FilterInput from '../../containers/Search/FilterInput';
 import RecipeCard from '../../containers/Search/RecipeCard';
 
 const Home: React.FC<IProps> = (props) => {
+  const { fetchRecipesBy, recipes } = props;
   const c = useStyles();
   const [result, setResult] = useState<null | any[]>(null);
   const [searchQuery, setSearchQuery] = useState<I.IComplexSearch>({
@@ -21,12 +23,21 @@ const Home: React.FC<IProps> = (props) => {
     offset: 0
   });
   const [state, setState] = useState({
-    include: [],
-    exclude: []
+    includeIngredients: [],
+    excludeIngredients: []
   });
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery({ ...searchQuery, [e.target.name]: e.target.value });
+  };
+
+  const onSearch = () => {
+    try {
+      const params = validate({ ...searchQuery, ...state });
+      fetchRecipesBy('complexSearch', { params });
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   const handleFilter = (mode: string, fltr: string, val: string) => {
@@ -59,7 +70,7 @@ const Home: React.FC<IProps> = (props) => {
             value={searchQuery.query}
             placeholder="e.g. Chicken Curry"
           />
-          <Button className={c.searchBtn} color="primary" variant="contained">
+          <Button className={c.searchBtn} onClick={onSearch} color="primary" variant="contained">
             Search
           </Button>
         </div>
@@ -70,22 +81,31 @@ const Home: React.FC<IProps> = (props) => {
           Filter by ingredients
         </Typography>
         <Accordion summary="Include ingredients">
-          <FilterInput name="include" data={state.include} handleFilter={handleFilter} />
+          <FilterInput
+            name="includeIngredients"
+            data={state.includeIngredients}
+            handleFilter={handleFilter}
+          />
         </Accordion>
         <Accordion summary="Exclude ingredients">
-          <FilterInput name="exclude" data={state.exclude} handleFilter={handleFilter} />
+          <FilterInput
+            name="excludeIngredients"
+            data={state.excludeIngredients}
+            handleFilter={handleFilter}
+          />
         </Accordion>
       </section>
 
-      <section>{result && result.map((res) => <RecipeCard key={res.id} {...res} />)}</section>
+      <section>
+        {!!recipes.length && recipes.map((res) => <RecipeCard key={res.id} {...res} />)}
+      </section>
     </main>
   );
 };
 
 const mapState = (state) => ({
   recipes: state.spoonacular.recipes.data.results,
-  page: state.spoonacular.recipes.data,
-  queries: state.queries
+  page: state.spoonacular.recipes.data
 });
 
 const mapDispatch = { ...spoonacular };
