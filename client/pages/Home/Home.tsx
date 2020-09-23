@@ -8,10 +8,10 @@ import useStyles from './styles';
 
 import * as I from '../../interface';
 import * as spoonacular from '../../store/actions/spoonacular';
-import validate from '../../containers/Search/validate';
 import Accordion from '../../components/Accordion';
-import FilterInput from '../../containers/Search/FilterInput';
-import RecipeCard from '../../containers/Search/RecipeCard';
+import FilterInput from '../../containers/Home/FilterInput';
+import RecipeCard from '../../containers/Home/RecipeCard';
+import validate from '../../containers/Home/validate';
 
 const Home: React.FC<IProps> = (props) => {
   const { fetchRecipesBy, recipes } = props;
