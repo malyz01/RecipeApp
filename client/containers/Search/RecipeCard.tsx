@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: '1em 0'
     },
     image: {
+      borderRadius: 20,
+      border: `3px solid ${theme.palette.primary.main}`,
       width: '100%'
     },
     recipeDetailContainer: {
