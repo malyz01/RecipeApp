@@ -10,8 +10,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { sIndex } from './styles';
 
 import Ingredient from './Ingredient';
-import * as queries from '../../../../store/actions/queries';
-import { capsCamelFirstWord } from '../../../../utils';
+import * as queries from '../../../../client/store/actions/queries';
+import { capsCamelFirstWord } from '../../../../client/utils';
 
 const index = (props: Props) => {
   const c = sIndex();

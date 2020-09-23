@@ -8,9 +8,9 @@ import { sIndex } from './styles';
 import FilterByIngredient from './FilterByIngredient';
 import FilterByNutri from './FilterByNutri';
 import RecipeDetail from './RecipeCard';
-import * as i from '../../../interfaces';
-import * as e from '../../../enum/spoonacular';
-import * as spoonacular from '../../../store/actions/spoonacular';
+import * as i from '../../../client/interfaces';
+import * as e from '../../../client/enum/spoonacular';
+import * as spoonacular from '../../../client/store/actions/spoonacular';
 import validate from './validate';
 
 const index = (props: IProps) => {
