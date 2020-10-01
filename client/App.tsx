@@ -10,6 +10,7 @@ const App = () => {
       <Nav />
       <Switch>
         <Route exact path="/" component={Page.Home} />
+        <Route exact path="/recipe/view/:id" component={Page.Recipe_View} />
         <Route exact path="*" component={Page.NotFound} />
       </Switch>
     </BrowserRouter>
