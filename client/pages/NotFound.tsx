@@ -1,10 +1,10 @@
 import React from 'react';
+import useStyles from './styles/notFound';
 
 const NotFound = () => {
+  const c = useStyles();
   return (
-    <div
-      style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 400 }}
-    >
+    <div className={c.mainContainer}>
       <h1>Sorry! URL does not exist!</h1>
     </div>
   );
