@@ -1,5 +1,5 @@
 import React from 'react';
-import useStyles from './styles/recipe_id';
+import useStyles from './styles/recipe_view';
 
 const Recipe_Id = (props) => {
   const c = useStyles();
